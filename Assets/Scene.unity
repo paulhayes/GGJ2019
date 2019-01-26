@@ -799,7 +799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 677425219}
   - component: {fileID: 677425220}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,8 +814,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677425218}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0.907}
-  m_LocalScale: {x: 0.9214168, y: 0.59999996, z: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0.921}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1256993238}
   m_RootOrder: 2
@@ -831,7 +831,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.25, z: 0.125}
+  m_Size: {x: 0.695, y: 0.15, z: 0.15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &732212513
 GameObject:
@@ -902,50 +902,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 33.367, y: -30.000002, z: 0}
---- !u!1 &748678871
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 748678872}
-  - component: {fileID: 748678873}
-  m_Layer: 0
-  m_Name: Crease (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &748678872
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748678871}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.397, y: 0.592, z: -0.5}
-  m_LocalScale: {x: 1.1628, y: 0.59999996, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1256993238}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &748678873
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748678871}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.675, y: 0.25, z: 0.125}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &774869125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1336,7 @@ Transform:
   - {fileID: 1951791170}
   - {fileID: 677425219}
   - {fileID: 1420782824}
-  - {fileID: 748678872}
+  - {fileID: 1684736874}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1759,7 +1715,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1420782824}
   - component: {fileID: 1420782825}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Crease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1774,8 +1730,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420782823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.426, y: 0.592, z: 0.5}
-  m_LocalScale: {x: 1.0606341, y: 0.6, z: 1}
+  m_LocalPosition: {x: 0.425, y: 0.592, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1256993238}
   m_RootOrder: 3
@@ -1791,7 +1747,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.675, y: 0.25, z: 0.125}
+  m_Size: {x: 0.695, y: 0.15, z: 0.15}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1552897461
 GameObject:
@@ -2042,8 +1998,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: whatIsGapSpace.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224720119, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224720119, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224720119, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+--- !u!1 &1684736873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684736874}
+  - component: {fileID: 1684736875}
+  m_Layer: 8
+  m_Name: Crease
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1684736874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684736873}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.386, y: 0.592, z: -0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1256993238}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1684736875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684736873}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.77, y: 0.15, z: 0.15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1685890952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2243,7 +2260,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1762557501
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2409,7 +2426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1928245302}
   - component: {fileID: 1928245303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BackCrease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2424,8 +2441,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928245301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.099, y: 0.6, z: 1.314}
-  m_LocalScale: {x: 0.96, y: 0.59999996, z: 1}
+  m_LocalPosition: {x: -0.109, y: 0.6, z: 1.349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1256993238}
   m_RootOrder: 0
@@ -2441,7 +2458,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.85, y: 0.25, z: 0.125}
+  m_Size: {x: 1.78, y: 0.16, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1951791169
 GameObject:
@@ -2453,7 +2470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1951791170}
   - component: {fileID: 1951791171}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BackCrease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2468,8 +2485,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951791169}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.85, y: 0.6, z: -0.123}
-  m_LocalScale: {x: 1.49, y: 0.59999996, z: 1}
+  m_LocalPosition: {x: 0.85, y: 0.6, z: -0.116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1256993238}
   m_RootOrder: 1
@@ -2485,7 +2502,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.85, y: 0.25, z: 0.125}
+  m_Size: {x: 2.775, y: 0.16, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2119870171
 GameObject:

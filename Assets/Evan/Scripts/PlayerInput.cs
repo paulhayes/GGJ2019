@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput
 {
 
     float horiz, vert;
 
-    // Start is called before the first frame update
-    void Start()
+    public static Vector2 GetMousePos ()
     {
-        
+        return Input.mousePosition;
     }
 
-    // Update is called once per frame
-    void Update()
+    public static float GetMouseX ()
     {
-        horiz = Input.GetAxisRaw("Mouse X");
-        vert = -Input.GetAxisRaw("Mouse Y");
+        return Input.GetAxisRaw("Mouse X");
+    }
 
-
+    public static float GetMouseY ()
+    {
+        return -Input.GetAxisRaw("Mouse Y");
     }
 }
