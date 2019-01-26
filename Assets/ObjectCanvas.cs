@@ -2,43 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectCanvasToken
-{
-	public ObjectCanvas Canvas;
-
-	public ObjectCanvasToken(ObjectCanvas canvas)
-	{
-		Canvas = canvas;
-	}
-}
-
 public class ObjectCanvas : MonoBehaviour
 {
 	public static ObjectCanvas Instance;
 
-	public RectTransform Holder;
+	public Transform Holder;
 
+	public GameObject LastTarget;
 	private GameObject destroy;
-
+	
+	public CurveInterpolator EntryBounce;
+	
 	private void Awake ()
 	{
 		Instance = this;
 	}
 
-	public ObjectCanvasToken Render(GameObject target)
+	private void Update ()
 	{
+		EntryBounce.Update (Time.deltaTime);
+
+		Holder.localScale = Vector3.one * EntryBounce.Value;
+	}
+
+	public void Render(GameObject target)
+	{
+		if(destroy != null)
+			Destroy (destroy);
+
+		LastTarget = target;
+
 		var clone = Instantiate (target);
 
 		clone.transform.SetParent (Holder);
 		clone.transform.localPosition = Vector3.zero;
+		clone.transform.localScale = Vector3.one;
+		clone.transform.localRotation = Quaternion.identity;
 
 		destroy = clone;
-
-		return new ObjectCanvasToken (this);
+		EntryBounce.TargetValue = 1.0f;
 	}
 
 	public void Clear()
 	{
-		Destroy (destroy);
+		EntryBounce.TargetValue = 0.0f;
+		// Destroy (destroy);
 	}
 }

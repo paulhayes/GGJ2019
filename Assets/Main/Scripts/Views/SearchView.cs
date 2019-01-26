@@ -40,22 +40,24 @@ public class SearchView : AbstractView
     private void Update()
     {
         float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
-        Debug.Log(mousePosX);
-
+        
         float speedToMove = 0;
 
         if (mousePosX < mouseSideThreshold)
         {
-            speedToMove = maxPanSpeed * (mousePosX/mouseSideThreshold) * Time.deltaTime;
+               
+            speedToMove = maxPanSpeed * Time.deltaTime;
+            Debug.Log(speedToMove);
             gapExplorer.MoveLeft(speedToMove);
 
-            transform.position = gapExplorer.GetHandPosWorldSpace();
+            //transform.position = gapExplorer.GetHandPosWorldSpace();
         } else if (mousePosX > 1 - mouseSideThreshold)
         {
-            speedToMove = maxPanSpeed * ((1 - mousePosX) / (mouseSideThreshold)) * Time.deltaTime;
+            speedToMove = maxPanSpeed * Time.deltaTime;
+            Debug.Log(speedToMove);
             gapExplorer.MoveRight(speedToMove);
 
-            transform.position = gapExplorer.GetHandPosWorldSpace();
+            //transform.position = gapExplorer.GetHandPosWorldSpace();
         }
     }
 }

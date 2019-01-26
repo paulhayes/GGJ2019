@@ -55,6 +55,13 @@ public class Gap : MonoBehaviour
         _camera.gameObject.SetActive(false);
     }
 
+    public float NormalizedPosOnLine(Vector3 position)
+    {
+        var pos = GetNearest( position ) - start.position;
+        var endPos = end.position - start.position;
+        return pos.magnitude / endPos.magnitude;
+    }
+
     public Vector3 GetNearest(Vector3 pos)
     {
         var endPos = ( end.position - start.position );
@@ -71,15 +78,16 @@ public class Gap : MonoBehaviour
     public Vector3 Move(float delatPos)
     {
         var endPos = ( end.position - start.position );
-        var pos = endPos.normalized * delatPos;
+        var pos = ( targetPosition.transform.position - start.position ) + endPos.normalized * delatPos;
         if(Vector3.Dot(endPos,pos)<0){
-            pos =  Vector3.zero;
+            pos = Vector3.zero;
         }
         if(pos.sqrMagnitude >= endPos.sqrMagnitude){
-            pos =  end.position - start.position;            
+            pos = endPos;
         }
         
-        return pos + start.position;
+        targetPosition.transform.position = pos + start.position;
+        return targetPosition.transform.position;
     }
 
 }
