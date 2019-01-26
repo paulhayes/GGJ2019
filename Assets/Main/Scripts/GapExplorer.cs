@@ -9,27 +9,41 @@ public class GapExplorer : MonoBehaviour
 
     protected Gap currentGap;
     protected Vector3 currentPos;
+    protected Vector2 handInGapPosition;
 
-    void MoveLeft(float amount)
+    public void MoveLeft(float amount)
     {
-        if(!currentGap)
-            return;
-
-        currentGap.Move(-amount);       
+        MoveRight(-amount);       
     }
 
-    void MoveRight(float amount)
+    public void MoveRight(float amount)
     {
         if(!currentGap)
             return;
+
         
-        currentGap.Move(amount);        
+        currentPos = currentGap.Move(amount);
+        handInGapPosition.x = currentGap.NormalizedPosOnLine(currentPos);   
+    }
+
+    void MoveIn(float amount){
+        handInGapPosition.y += amount;
+        handInGapPosition.y = Mathf.Clamp01(handInGapPosition.y);
+    }
+
+    void MoveOut(float amount){
+        MoveIn(-amount);
     }
     
     public Vector3 GetHandPosWorldSpace()
     {
         return currentPos;
     }
+
+    public Item GetClosestItem(ref float distance){
+        return currentGap.GetGapSpace().GetClosestItem(handInGapPosition, ref distance);
+    }
+
 
     public void SelectNearestGap(Vector3 pos)
     {
@@ -47,7 +61,8 @@ public class GapExplorer : MonoBehaviour
             }
         }
 
-        nearest.Select();
+        currentGap = nearest;
+        currentGap.Select();
     }
 
 }

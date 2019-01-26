@@ -1,6 +1,8 @@
 ﻿Narrative Design Bible
 
 
+
+
 Looking for a Key to a lock box down the back of a sofa, finding along the way…
 
 
@@ -23,6 +25,8 @@ Half a biscuit “Probably shouldn’t eat this, probably.”
 Yale Key “Wow, sorry David I guess I DID have your door key.”
 
 Sock “I suppose this solves that mystery then”
+
+Tooth “Oh, yeah, sorry”
 
 *Photo “Hey June. Hah! You were freezing in that dress, completely forgot about the wind-chill. Always account for the wind-chill.”
 

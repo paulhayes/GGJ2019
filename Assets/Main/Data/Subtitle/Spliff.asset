@@ -10,19 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
-  m_Name: Intro 1
+  m_Name: Spliff
   m_EditorClassIdentifier: 
   Displays:
-  - Text: You've lost a key.
+  - Text: "Its just a...lot dry, it\u2019s still good?"
     Area: 0
-    WriteMode: 1
-    CharacterDisplay: 0.05
-  - Text: Receipt
-    Area: 1
-    WriteMode: 0
-    CharacterDisplay: 0
-  Delay: 3
+  Delay: 0
   Duration: 2
   PlaySound: {fileID: 0}
-  DisplayObject: {fileID: 0}
-  Enqueues: {fileID: 11400000, guid: 64deb11ac79ccf543aa3a34717458533, type: 2}

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
+  m_Name: Intro 2
+  m_EditorClassIdentifier: 
+  Displays:
+  - Text: Receipt
+    Area: 1
+    WriteMode: 0
+    CharacterDisplay: 0
+  - Text: Never could get that curry stain out of the carpet, sorry Emma. Smelled
+      nice though.
+    Area: 0
+    WriteMode: 1
+    CharacterDisplay: 0
+  Delay: 1
+  Duration: 2
+  PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 550308921366353335, guid: f61f4914e12741f429e363acde103a43,
+    type: 3}
+  Enqueues: {fileID: 11400000}
