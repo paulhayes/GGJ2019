@@ -1,45 +1,9 @@
 fileFormatVersion: 2
-guid: f0848820fe6ec48939564d87b1a50501
+guid: 49e1fab4cbf29413bb3feaf03b3508dc
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Box Bottom
-    100002: Box Joint
-    100004: Box Lock
-    100006: Box Top
-    100008: Box Top Handle
-    100010: //RootNode
-    400000: Box Bottom
-    400002: Box Joint
-    400004: Box Lock
-    400006: Box Top
-    400008: Box Top Handle
-    400010: //RootNode
-    2100000: No Name
-    2300000: Box Bottom
-    2300002: Box Joint
-    2300004: Box Lock
-    2300006: Box Top
-    2300008: Box Top Handle
-    3300000: Box Bottom
-    3300002: Box Joint
-    3300004: Box Lock
-    3300006: Box Top
-    3300008: Box Top Handle
-    4300000: Box Top
-    4300002: Box Bottom
-    4300004: Box Lock
-    4300006: Box Top Handle
-    4300008: Box Joint
-    7400000: Box Top|Open
-    7400002: Box Top|Open.001
-    7400004: Box Top|Open.002
-    7400006: Box Top|Open.003
-    7400008: Box Top Handle|Open
-    7400010: Box Top Handle|Open.001
-    7400012: Box Top Handle|Open.002
-    7400014: Box Top Handle|Open.003
-    9500000: //RootNode
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -92,8 +56,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
