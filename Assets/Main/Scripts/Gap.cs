@@ -22,6 +22,10 @@ public class Gap : MonoBehaviour
         coll = GetComponent<Collider>();
     }
 
+    public GapSpace GetGapSpace(){
+        return gapSpace;
+    }
+
 
     GapSpace GetSpace()
     {
