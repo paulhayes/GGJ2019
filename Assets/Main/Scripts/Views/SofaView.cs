@@ -13,11 +13,17 @@ public class SofaView : AbstractView
     [SerializeField]
     private GameObject creaseIndicator;
 
+    [SerializeField]
+    private Cinemachine.CinemachineVirtualCamera introCam;
+
+    private Cinemachine.CinemachineBrain cinemachineBrain;
+
     private Gap currentGap;
 
 
     public override void Begin()
     {
+
         throw new System.NotImplementedException();
     }
 
@@ -26,10 +32,17 @@ public class SofaView : AbstractView
         throw new System.NotImplementedException();
     }
 
+    private void Awake()
+    {
+        cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (introCam.gameObject.activeSelf || cinemachineBrain.IsBlending)
+            return;
+
         creaseIndicator.SetActive(false);
 
         Ray ray = cam.ScreenPointToRay(PlayerInput.GetMousePos());
