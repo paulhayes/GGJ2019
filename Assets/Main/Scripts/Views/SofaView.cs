@@ -16,6 +16,8 @@ public class SofaView : AbstractView
     [SerializeField]
     private Cinemachine.CinemachineVirtualCamera introCam;
 
+    private GapExplorer gapExplorer;
+
     private Cinemachine.CinemachineBrain cinemachineBrain;
 
     private Gap currentGap;
@@ -34,6 +36,7 @@ public class SofaView : AbstractView
 
     private void Awake()
     {
+        gapExplorer = GetComponent<GapExplorer>();
         cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
     }
 
@@ -60,16 +63,18 @@ public class SofaView : AbstractView
                     currentGap.ShowIndicator(true);
             }
 
-            Vector3 indPos = CalculateIndicatorPos(hit.point, hit.collider);
+            SetIndicatorPos(hit.point, hit.collider);
 
             if (currentGap != null && PlayerInput.GetLeftMouseDown())
             {
-                Vector3 nearestPos = currentGap.GetNearest(hit.collider.transform.TransformPoint(indPos));
-                transform.position = nearestPos;
+                gapExplorer.SelectNearestGap(currentGap.GetNearest(creaseIndicator.transform.position));
+                currentGap.ShowIndicator(false);
+                transform.position = gapExplorer.GetHandPosWorldSpace();
+
+                this.enabled = false;
             } else
             {
                 creaseIndicator.SetActive(true);
-                SetIndicatorPos(indPos, hit.collider);
             }
         }
         else
@@ -81,17 +86,13 @@ public class SofaView : AbstractView
         }
     }
 
-    Vector3 CalculateIndicatorPos (Vector3 hitPos, Collider hitCollider)
+    void SetIndicatorPos (Vector3 hitPos, Collider hitCollider)
     {
+        creaseIndicator.transform.SetParent(hitCollider.transform);
+
         Vector3 indPos = Vector3.zero;
         indPos.x = hitCollider.transform.InverseTransformPoint(hitPos).x;
 
-        return indPos;
-    }
-
-    void SetIndicatorPos (Vector3 indPos, Collider hitCollider)
-    {
-        creaseIndicator.transform.SetParent(hitCollider.transform);
         creaseIndicator.transform.localPosition = indPos;
         creaseIndicator.transform.SetParent(transform);
     }

@@ -35,17 +35,19 @@ public class GapExplorer : MonoBehaviour
     {
         Gap nearest = null;
         float nearestDistSqr = float.MaxValue;
+
+        //Vector3 nearPos = Vector3.zero;
         for(int i=0;i<gaps.Length;i++){
             var gapPos = gaps[i].GetNearest(pos);
-            var nearPos = -gaps[i].GetNearest(pos);
-            var distSqr = (pos-nearPos).sqrMagnitude;
+            var distSqr = (pos-gapPos).sqrMagnitude;
             if( distSqr < nearestDistSqr ){
                 nearestDistSqr = distSqr;
                 nearest = gaps[i];
-                currentPos = nearPos;
+                currentPos = gapPos;
             }
         }
 
+        nearest.Select();
     }
 
 }
