@@ -10,6 +10,8 @@ public class DialogManager : MonoBehaviour
 		public Dialog.DisplayArea.Options Area;
 		public DialogDisplay Display;
 	}
+
+	public Dialog PlayOnStart;
 	public CanvasGroup Fader;
 
 	public DisplayMapping[] Displays;
@@ -19,8 +21,19 @@ public class DialogManager : MonoBehaviour
 
 	private AudioSource soundPlayer;
 
-	IEnumerator<YieldInstruction> Start()
+	private void Start ()
 	{
+		foreach (var findDisplay in Displays)
+		{
+			findDisplay.Display.gameObject.SetActive (false);
+		}
+
+		StartCoroutine (Process());
+	}
+
+	IEnumerator<YieldInstruction> Process()
+	{
+		MessageQueue.Enqueue (PlayOnStart);
 		soundPlayer = gameObject.AddComponent<AudioSource> ();
 
 		while (true)
@@ -29,8 +42,26 @@ public class DialogManager : MonoBehaviour
 				yield return null;
 
 			var currentMessage = MessageQueue.Dequeue ();
+			yield return new WaitForSeconds (currentMessage.Delay);
 
-			soundPlayer.PlayOneShot (currentMessage.PlaySound);
+			if (currentMessage.PlaySound != null)
+				soundPlayer.PlayOneShot (currentMessage.PlaySound);
+
+			foreach(var displayOptions in currentMessage.Displays)
+			{
+				foreach(var findDisplay in Displays)
+				{
+					if (findDisplay.Area == displayOptions.Area)
+					{
+						findDisplay.Display.gameObject.SetActive (true);
+						findDisplay.Display.text.text = displayOptions.Text;
+					}
+					else
+					{
+						findDisplay.Display.gameObject.SetActive (false);
+					}
+				}
+			}
 
 			foreach(var time in new TimedLoop (fadeInTime))
 			{
@@ -38,7 +69,7 @@ public class DialogManager : MonoBehaviour
 				yield return null;
 			}
 
-
+			yield return new WaitForSeconds (currentMessage.Duration);
 
 			foreach (var time in new TimedLoop (fadeOutTime))
 			{

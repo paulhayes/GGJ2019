@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
-  m_Name: Intro 1
+  m_Name: Intro 2
   m_EditorClassIdentifier: 
   Displays:
-  - Text: You've lost a key.
+  - Text: Never could get that curry stain out of the carpet, sorry Emma. Smelled
+      nice though.
     Area: 0
   Delay: 3
   Duration: 2
