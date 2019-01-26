@@ -7,15 +7,35 @@ public class Gap : MonoBehaviour
     [SerializeField] Transform start;
     [SerializeField] Transform end;
 
-    [SerializeField] Cinemachine.CinemachineVirtualCamera _camera;
-
     [SerializeField] GapSpace gapSpace;
 
+    [SerializeField] GameObject gapIndicator;
+
+    [SerializeField] Cinemachine.CinemachineVirtualCamera _camera;
+
     [SerializeField] GameObject targetPosition;
+
+    Collider coll;
+
+    private void Awake()
+    {
+        coll = GetComponent<Collider>();
+    }
+
 
     GapSpace GetSpace()
     {
         return gapSpace;
+    }
+
+    public Collider GetCollider ()
+    {
+        return coll;
+    }
+
+    public void ShowIndicator (bool visible)
+    {
+        gapIndicator.SetActive(visible);
     }
 
     public void Select()
@@ -56,6 +76,5 @@ public class Gap : MonoBehaviour
         
         return pos + start.position;
     }
-
 
 }
