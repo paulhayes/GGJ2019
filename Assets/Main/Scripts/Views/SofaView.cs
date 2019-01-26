@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SofaView : MonoBehaviour
+public class SofaView : AbstractView
 {
     [SerializeField]
     private Camera cam;
@@ -13,13 +13,19 @@ public class SofaView : MonoBehaviour
     [SerializeField]
     private GameObject creaseIndicator;
 
-    private GameObject currentGap;
+    private Gap currentGap;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public override void Begin()
     {
-        
+        throw new System.NotImplementedException();
     }
+
+    public override void End()
+    {
+        throw new System.NotImplementedException();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -31,13 +37,27 @@ public class SofaView : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsGapSpace))
         {
+            if (currentGap == null || currentGap.GetCollider() != hit.collider) {
+                if (currentGap != null)
+                    currentGap.ShowIndicator(false);
+
+                currentGap = hit.collider.GetComponent<Gap>();
+
+                if (currentGap != null)
+                    currentGap.ShowIndicator(true);
+            }
+
             creaseIndicator.SetActive(true);
             SetIndicatorPos(hit.point, hit.collider);
+        } else
+        {
+            if (currentGap != null)
+                currentGap.ShowIndicator(false);
+
+            currentGap = null;
         }
 
-
     }
-
 
     void SetIndicatorPos (Vector3 hitPos, Collider hitCollider)
     {
