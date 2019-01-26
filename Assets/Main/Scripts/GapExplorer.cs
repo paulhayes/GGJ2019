@@ -11,15 +11,16 @@ public class GapExplorer : MonoBehaviour
     protected Vector3 currentPos;
     protected Vector2 handInGapPosition;
 
-    void MoveLeft(float amount)
+    public void MoveLeft(float amount)
     {
         MoveRight(-amount);       
     }
 
-    void MoveRight(float amount)
+    public void MoveRight(float amount)
     {
         if(!currentGap)
             return;
+
         
         currentPos = currentGap.Move(amount);        
     }
@@ -59,7 +60,8 @@ public class GapExplorer : MonoBehaviour
             }
         }
 
-        nearest.Select();
+        currentGap = nearest;
+        currentGap.Select();
     }
 
 }

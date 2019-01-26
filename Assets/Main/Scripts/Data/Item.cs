@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     // hint data
     // 3d model
     
+    
 
     // Resetable data
     public bool hasBeenFound;

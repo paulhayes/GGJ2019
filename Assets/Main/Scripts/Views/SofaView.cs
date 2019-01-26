@@ -17,6 +17,7 @@ public class SofaView : AbstractView
     private Cinemachine.CinemachineVirtualCamera introCam;
 
     private GapExplorer gapExplorer;
+    private SearchView searchView;
 
     private Cinemachine.CinemachineBrain cinemachineBrain;
 
@@ -25,19 +26,29 @@ public class SofaView : AbstractView
 
     public override void Begin()
     {
+        this.enabled = true;
+        //searchView.enabled = false;
 
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void End()
     {
-        throw new System.NotImplementedException();
+        this.enabled = false;
+
+        //throw new System.NotImplementedException();
     }
 
     private void Awake()
     {
         gapExplorer = GetComponent<GapExplorer>();
+        searchView = GetComponent<SearchView>();
         cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
+    }
+
+    private void Start()
+    {
+        Begin();
     }
 
     // Update is called once per frame
@@ -71,7 +82,8 @@ public class SofaView : AbstractView
                 currentGap.ShowIndicator(false);
                 transform.position = gapExplorer.GetHandPosWorldSpace();
 
-                this.enabled = false;
+                searchView.Begin();
+                End();
             } else
             {
                 creaseIndicator.SetActive(true);

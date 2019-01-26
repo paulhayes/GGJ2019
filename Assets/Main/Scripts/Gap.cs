@@ -22,7 +22,8 @@ public class Gap : MonoBehaviour
         coll = GetComponent<Collider>();
     }
 
-    public GapSpace GetGapSpace(){
+    public GapSpace GetGapSpace()
+    {
         return gapSpace;
     }
 
@@ -72,10 +73,10 @@ public class Gap : MonoBehaviour
         var endPos = ( end.position - start.position );
         var pos = endPos.normalized * delatPos;
         if(Vector3.Dot(endPos,pos)<0){
-            pos =  start.position;
+            pos =  Vector3.zero;
         }
         if(pos.sqrMagnitude >= endPos.sqrMagnitude){
-            pos =  end.position;            
+            pos =  end.position - start.position;            
         }
         
         return pos + start.position;
