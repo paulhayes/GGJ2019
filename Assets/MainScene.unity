@@ -5229,11 +5229,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
         type: 3}
-      propertyPath: whatIsGapSpace.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
-        type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 390091446}
@@ -5242,27 +5237,30 @@ PrefabInstance:
       propertyPath: introCam
       value: 
       objectReference: {fileID: 1451821975}
-    - target: {fileID: 1224720119, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224720119, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224720119, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6518046062307031751, guid: c7238fc3f9220384d9afa172b0c63ace,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1224720118, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 390091446}
+    - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gaps.Array.data[0]
+      value: 
+      objectReference: {fileID: 1928245304}
+    - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gaps.Array.data[1]
+      value: 
+      objectReference: {fileID: 1951791172}
+    - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gaps.Array.data[2]
+      value: 
+      objectReference: {fileID: 677425221}
+    - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gaps.Array.data[3]
+      value: 
+      objectReference: {fileID: 1420782826}
+    - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gaps.Array.data[4]
+      value: 
+      objectReference: {fileID: 1684736876}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
 --- !u!1 &1634097015
@@ -5759,24 +5757,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1616132080}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1828557571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828557570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 581df40473a80e24ab615c2135ef72fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gaps:
-  - {fileID: 1928245304}
-  - {fileID: 1951791172}
-  - {fileID: 677425221}
-  - {fileID: 1420782826}
-  - {fileID: 1684736876}
 --- !u!1 &1862600490
 GameObject:
   m_ObjectHideFlags: 0

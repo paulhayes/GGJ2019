@@ -10,20 +10,20 @@ public class GapExplorer : MonoBehaviour
     protected Gap currentGap;
     protected Vector3 currentPos;
 
-    void MoveLeft(float amount)
+    public void MoveLeft(float amount)
     {
         if(!currentGap)
             return;
 
-        currentGap.Move(-amount);       
+        currentPos += currentGap.Move(-amount);       
     }
 
-    void MoveRight(float amount)
+    public void MoveRight(float amount)
     {
         if(!currentGap)
             return;
-        
-        currentGap.Move(amount);        
+
+        currentPos += currentGap.Move(amount);        
     }
     
     public Vector3 GetHandPosWorldSpace()
@@ -47,7 +47,8 @@ public class GapExplorer : MonoBehaviour
             }
         }
 
-        nearest.Select();
+        currentGap = nearest;
+        currentGap.Select();
     }
 
 }
