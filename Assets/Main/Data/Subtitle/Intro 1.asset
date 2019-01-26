@@ -15,6 +15,9 @@ MonoBehaviour:
   Displays:
   - Text: You've lost a key.
     Area: 0
+    WriteMode: 1
+    CharacterDisplay: 0.05
   Delay: 3
   Duration: 2
   PlaySound: {fileID: 0}
+  Enqueues: {fileID: 11400000, guid: 64deb11ac79ccf543aa3a34717458533, type: 2}
