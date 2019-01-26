@@ -5,9 +5,13 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Item : ScriptableObject
 {
+
+    public Dialog dialog;
     // text data
+    
     // hint data
     // 3d model
+    
     
 
     // Resetable data
