@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Intro 2
   m_EditorClassIdentifier: 
   Displays:
+  - Text: Receipt
+    Area: 1
+    WriteMode: 0
+    CharacterDisplay: 0
   - Text: Never could get that curry stain out of the carpet, sorry Emma. Smelled
       nice though.
     Area: 0
-  Delay: 3
+    WriteMode: 1
+    CharacterDisplay: 0
+  Delay: 1
   Duration: 2
   PlaySound: {fileID: 0}
+  Enqueues: {fileID: 11400000}

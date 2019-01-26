@@ -42,8 +42,16 @@ public class DialogManager : MonoBehaviour
 				yield return null;
 
 			var currentMessage = MessageQueue.Dequeue ();
-			yield return new WaitForSeconds (currentMessage.Delay);
 
+			if (currentMessage.Enqueues != null)
+				MessageQueue.Enqueue (currentMessage.Enqueues);
+
+			foreach (var displayOptions in currentMessage.Displays)
+			{
+				displayOptions.CachePosiiton = 0;
+			}
+
+			yield return new WaitForSeconds (currentMessage.Delay);
 			if (currentMessage.PlaySound != null)
 				soundPlayer.PlayOneShot (currentMessage.PlaySound);
 
@@ -54,7 +62,10 @@ public class DialogManager : MonoBehaviour
 					if (findDisplay.Area == displayOptions.Area)
 					{
 						findDisplay.Display.gameObject.SetActive (true);
-						findDisplay.Display.text.text = displayOptions.Text;
+						if (displayOptions.WriteMode == Dialog.DisplayArea.TextSettings.Appear)
+							findDisplay.Display.text.text = displayOptions.Text;
+						else
+							findDisplay.Display.text.text = "";
 					}
 					else
 					{
@@ -67,6 +78,30 @@ public class DialogManager : MonoBehaviour
 			{
 				Fader.alpha = time;
 				yield return null;
+			}
+
+			while (true)
+			{
+				bool hasTyped = false;
+				foreach (var displayOptions in currentMessage.Displays)
+				{
+					foreach (var findDisplay in Displays)
+					{
+						if (findDisplay.Area == displayOptions.Area)
+						{
+							if (displayOptions.WriteMode == Dialog.DisplayArea.TextSettings.Typewriter &&
+								displayOptions.CachePosiiton != displayOptions.Text.Length - 1)
+							{
+								findDisplay.Display.text.text += displayOptions.Text[displayOptions.CachePosiiton];
+								displayOptions.CachePosiiton++;
+								hasTyped = true;
+								yield return new WaitForSeconds (displayOptions.CharacterDisplay);
+							}
+						}
+					}
+				}
+				if (!hasTyped)
+					break;
 			}
 
 			yield return new WaitForSeconds (currentMessage.Duration);
