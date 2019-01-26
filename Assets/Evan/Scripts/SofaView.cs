@@ -13,6 +13,8 @@ public class SofaView : MonoBehaviour
     [SerializeField]
     private GameObject creaseIndicator;
 
+    private GameObject currentGap;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,6 @@ public class SofaView : MonoBehaviour
         creaseIndicator.transform.SetParent(hitCollider.transform);
 
         Vector3 indPos = Vector3.zero;
-        //indPos.y = hitCollider.bounds.size.y*0.5f;
         indPos.x = hitCollider.transform.InverseTransformPoint(hitPos).x;
 
         creaseIndicator.transform.localPosition = indPos;
