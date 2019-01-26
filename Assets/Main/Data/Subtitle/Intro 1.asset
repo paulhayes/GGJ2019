@@ -19,10 +19,11 @@ MonoBehaviour:
     CharacterDisplay: 0.05
   - Text: Receipt
     Area: 1
-    WriteMode: 0
+    WriteMode: 1
     CharacterDisplay: 0
   Delay: 3
   Duration: 2
   PlaySound: {fileID: 0}
-  DisplayObject: {fileID: 0}
+  DisplayObject: {fileID: 5220427715934903604, guid: 220ad3559a63d7e4f8990401c0110865,
+    type: 3}
   Enqueues: {fileID: 11400000, guid: 64deb11ac79ccf543aa3a34717458533, type: 2}

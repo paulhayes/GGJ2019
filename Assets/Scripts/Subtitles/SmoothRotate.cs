@@ -13,8 +13,6 @@ public class SmoothRotate : MonoBehaviour
 
 	IEnumerator Shake ()
 	{
-		float elapsed = 0.0f;
-
 		Vector3 originalCamRot = transform.eulerAngles;
 
 		while (true)
@@ -33,7 +31,5 @@ public class SmoothRotate : MonoBehaviour
 
 			yield return null;
 		}
-
-		transform.eulerAngles = originalCamRot;
 	}
 }
