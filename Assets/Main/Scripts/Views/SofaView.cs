@@ -60,27 +60,39 @@ public class SofaView : AbstractView
                     currentGap.ShowIndicator(true);
             }
 
-            creaseIndicator.SetActive(true);
-            SetIndicatorPos(hit.point, hit.collider);
-        } else
+            Vector3 indPos = CalculateIndicatorPos(hit.point, hit.collider);
+
+            if (currentGap != null && PlayerInput.GetLeftMouseDown())
+            {
+                Vector3 nearestPos = currentGap.GetNearest(hit.collider.transform.TransformPoint(indPos));
+                transform.position = nearestPos;
+            } else
+            {
+                creaseIndicator.SetActive(true);
+                SetIndicatorPos(indPos, hit.collider);
+            }
+        }
+        else
         {
             if (currentGap != null)
                 currentGap.ShowIndicator(false);
 
             currentGap = null;
         }
-
     }
 
-    void SetIndicatorPos (Vector3 hitPos, Collider hitCollider)
+    Vector3 CalculateIndicatorPos (Vector3 hitPos, Collider hitCollider)
     {
-        creaseIndicator.transform.SetParent(hitCollider.transform);
-
         Vector3 indPos = Vector3.zero;
         indPos.x = hitCollider.transform.InverseTransformPoint(hitPos).x;
 
-        creaseIndicator.transform.localPosition = indPos;
+        return indPos;
+    }
 
+    void SetIndicatorPos (Vector3 indPos, Collider hitCollider)
+    {
+        creaseIndicator.transform.SetParent(hitCollider.transform);
+        creaseIndicator.transform.localPosition = indPos;
         creaseIndicator.transform.SetParent(transform);
     }
 }
