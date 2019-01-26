@@ -22,7 +22,8 @@ public class GapExplorer : MonoBehaviour
             return;
 
         
-        currentPos = currentGap.Move(amount);        
+        currentPos = currentGap.Move(amount);
+        handInGapPosition.x = currentGap.NormalizedPosOnLine(currentPos);   
     }
 
     void MoveIn(float amount){
