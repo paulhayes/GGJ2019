@@ -11,12 +11,17 @@ public class Gap : MonoBehaviour
 
     [SerializeField] GameObject gapIndicator;
 
+    [SerializeField] Cinemachine.CinemachineVirtualCamera _camera;
+
+    [SerializeField] GameObject targetPosition;
+
     Collider coll;
 
     private void Awake()
     {
         coll = GetComponent<Collider>();
     }
+
 
     GapSpace GetSpace()
     {
@@ -32,4 +37,27 @@ public class Gap : MonoBehaviour
     {
         gapIndicator.SetActive(visible);
     }
+
+    public void Select()
+    {
+        _camera.gameObject.SetActive(true);
+        _camera.LookAt = targetPosition.transform;
+        _camera.Follow = targetPosition.transform;
+    }
+
+    public void Deselect()
+    {
+        _camera.gameObject.SetActive(false);
+    }
+
+    public Vector3 GetNearest()
+    {
+        return Vector3.zero;
+    }
+
+    public Vector3 Move(float delatPos)
+    {
+        return Vector3.zero;
+    }
+
 }
