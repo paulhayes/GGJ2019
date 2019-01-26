@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,9 @@ public class GapSpace : ScriptableObject
 {
     ItemPosition[] positions;
 
-    Item GetClosestItem(Vector2 pos, ref float distance)
+    public Item GetClosestItem(Vector2 pos, ref float distance)
     {
-        return null;
+        throw new NotImplementedException();     
     }
+
 }

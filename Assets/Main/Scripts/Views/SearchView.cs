@@ -46,14 +46,16 @@ public class SearchView : AbstractView
 
         if (mousePosX < mouseSideThreshold)
         {
-            speedToMove = maxPanSpeed * (mousePosX/mouseSideThreshold);
+            speedToMove = maxPanSpeed * (mousePosX/mouseSideThreshold) * Time.deltaTime;
             gapExplorer.MoveLeft(speedToMove);
+
+            transform.position = gapExplorer.GetHandPosWorldSpace();
         } else if (mousePosX > 1 - mouseSideThreshold)
         {
-            speedToMove = maxPanSpeed * ((1 - mousePosX) / (mouseSideThreshold));
+            speedToMove = maxPanSpeed * ((1 - mousePosX) / (mouseSideThreshold)) * Time.deltaTime;
             gapExplorer.MoveRight(speedToMove);
-        }
 
-        transform.position = gapExplorer.GetHandPosWorldSpace();
+            transform.position = gapExplorer.GetHandPosWorldSpace();
+        }
     }
 }
