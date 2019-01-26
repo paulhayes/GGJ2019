@@ -6,7 +6,7 @@ using UnityEngine;
 public class Dialog : ScriptableObject
 {
 	[Serializable]
-	public struct DisplayArea
+	public class DisplayArea
 	{
 		public enum Options
 		{
@@ -14,14 +14,28 @@ public class Dialog : ScriptableObject
 			Header,
 			Aside
 		}
+		public enum TextSettings
+		{
+			Appear,
+			Typewriter
+		}
 
 		[TextArea(3, 10)]
 		public string Text;
 		public Options Area;
+		public TextSettings WriteMode;
+		public float CharacterDisplay;
+
+		[NonSerialized]
+		public int CachePosiiton;
 	}
 
 	public DisplayArea[] Displays = new DisplayArea[1];
 	public float Delay;
 	public float Duration = 2.0f;
+	[Space]
 	public AudioClip PlaySound;
+	public GameObject DisplayObject;
+	[Space]
+	public Dialog Enqueues;
 }
