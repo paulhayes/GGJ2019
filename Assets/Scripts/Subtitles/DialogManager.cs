@@ -50,7 +50,9 @@ public class DialogManager : MonoBehaviour
 		while (true)
 		{
 			while (messageQueue.Count == 0)
+			{
 				yield return null;
+			}
 
 			var currentMessage = messageQueue.Dequeue ();
 
@@ -65,6 +67,9 @@ public class DialogManager : MonoBehaviour
 			yield return new WaitForSeconds (currentMessage.Delay);
 			if (currentMessage.PlaySound != null)
 				soundPlayer.PlayOneShot (currentMessage.PlaySound);
+
+			if(currentMessage.DisplayObject != null && ObjectCanvas.Instance.LastTarget != currentMessage.DisplayObject)
+				ObjectCanvas.Instance.Render (currentMessage.DisplayObject);
 
 			foreach (var findDisplay in Displays)
 			{
@@ -91,6 +96,7 @@ public class DialogManager : MonoBehaviour
 				foreach (var findDisplay in Displays)
 				{
 					findDisplay.Display.fader.alpha = time;
+					
 					if (currentMessage != null)
 					{
 						foreach (var displayOptions in currentMessage.Displays)
@@ -118,7 +124,7 @@ public class DialogManager : MonoBehaviour
 						if (findDisplay.Area == displayOptions.Area)
 						{
 							if (displayOptions.WriteMode == Dialog.DisplayArea.TextSettings.Typewriter &&
-								displayOptions.CachePosiiton != displayOptions.Text.Length - 1)
+								displayOptions.CachePosiiton != displayOptions.Text.Length)
 							{
 								findDisplay.Display.text.text += displayOptions.Text[displayOptions.CachePosiiton];
 								displayOptions.CachePosiiton++;
@@ -131,13 +137,21 @@ public class DialogManager : MonoBehaviour
 				if (!hasTyped)
 					break;
 			}
-
+			
 			yield return new WaitForSeconds (currentMessage.Duration);
 
 			// Get the next message and only fade out if the next message is not the same.
 			Dialog nextMessage = null;
 			if (messageQueue.Count != 0)
 				nextMessage = messageQueue.Peek ();
+			
+			if (nextMessage != null && nextMessage.DisplayObject != currentMessage.DisplayObject)
+			{
+				if (ObjectCanvas.Instance.LastTarget == currentMessage.DisplayObject)
+				{
+					ObjectCanvas.Instance.Clear ();
+				}
+			}
 
 			foreach (var time in new TimedLoop (fadeOutTime))
 			{
