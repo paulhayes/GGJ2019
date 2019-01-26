@@ -14,7 +14,6 @@ public class DialogManager : MonoBehaviour
 	}
 
 	public Dialog PlayOnStart;
-	public CanvasGroup Fader;
 
 	public DisplayMapping[] Displays;
 	public float fadeInTime = 0.5f;
@@ -67,7 +66,11 @@ public class DialogManager : MonoBehaviour
 			if (currentMessage.PlaySound != null)
 				soundPlayer.PlayOneShot (currentMessage.PlaySound);
 
-			foreach(var currentMessageDisplay in currentMessage.Displays)
+			foreach (var findDisplay in Displays)
+			{
+				findDisplay.Display.gameObject.SetActive (false);
+			}
+			foreach (var currentMessageDisplay in currentMessage.Displays)
 			{
 				foreach(var findDisplay in Displays)
 				{
@@ -79,16 +82,29 @@ public class DialogManager : MonoBehaviour
 						else
 							findDisplay.Display.text.text = "";
 					}
-					else
-					{
-						findDisplay.Display.gameObject.SetActive (false);
-					}
 				}
 			}
+			
 
-			foreach(var time in new TimedLoop (fadeInTime))
+			foreach (var time in new TimedLoop (fadeOutTime))
 			{
-				Fader.alpha = time;
+				foreach (var findDisplay in Displays)
+				{
+					findDisplay.Display.fader.alpha = time;
+					if (currentMessage != null)
+					{
+						foreach (var displayOptions in currentMessage.Displays)
+						{
+							if (findDisplay.Area == displayOptions.Area)
+							{
+								if (findDisplay.Display.text.text == displayOptions.Text)
+								{
+									findDisplay.Display.fader.alpha = 1.0f;
+								}
+							}
+						}
+					}
+				}
 				yield return null;
 			}
 
@@ -118,9 +134,30 @@ public class DialogManager : MonoBehaviour
 
 			yield return new WaitForSeconds (currentMessage.Duration);
 
+			// Get the next message and only fade out if the next message is not the same.
+			Dialog nextMessage = null;
+			if (messageQueue.Count != 0)
+				nextMessage = messageQueue.Peek ();
+
 			foreach (var time in new TimedLoop (fadeOutTime))
 			{
-				Fader.alpha = 1.0f - time;
+				foreach (var findDisplay in Displays)
+				{
+					findDisplay.Display.fader.alpha = 1.0f - time;
+					if (nextMessage != null)
+					{
+						foreach (var displayOptions in nextMessage.Displays)
+						{
+							if (findDisplay.Area == displayOptions.Area)
+							{
+								if (findDisplay.Display.text.text == displayOptions.Text)
+								{
+									findDisplay.Display.fader.alpha = 1.0f;
+								}
+							}
+						}
+					}
+				}
 				yield return null;
 			}
 
