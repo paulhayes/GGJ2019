@@ -23,7 +23,7 @@ MonoBehaviour:
     CharacterDisplay: 0.05
   Delay: 0.25
   Duration: 1
-  ClickToContinue: 1
+  ClickToContinue: 0
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 0}
   Enqueues: {fileID: 11400000, guid: 2dda3657cf2d31e4c8a3773b60d6e3c2, type: 2}

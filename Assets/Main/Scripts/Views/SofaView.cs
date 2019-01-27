@@ -18,6 +18,12 @@ public class SofaView : AbstractView
 
     [SerializeField] private Cinemachine.CinemachineBrain cinemachineBrain;
 
+    [SerializeField] DialogManager dialogManager;
+
+    [SerializeField] Dialog[] introDialogs;
+
+    private bool triggerTutorial = true;
+
     private GapExplorer gapExplorer;
     private SearchView searchView;
 
@@ -32,6 +38,9 @@ public class SofaView : AbstractView
 
         if (currentGap)
             currentGap.Deselect();
+
+        introDialogs[1].AutoContinue = false;
+
         //searchView.enabled = false;
 
         //throw new System.NotImplementedException();
@@ -69,6 +78,15 @@ public class SofaView : AbstractView
 
         creaseIndicator.SetActive(false);
 
+        if (triggerTutorial)
+        {
+            dialogManager.Play(introDialogs[0]);
+            triggerTutorial = false;
+        }
+
+        if (DialogManager.CurrentMessage == introDialogs[0])
+            return;
+
         Ray ray = cam.ScreenPointToRay(PlayerInput.GetMousePos());
         RaycastHit hit;
 
@@ -88,6 +106,9 @@ public class SofaView : AbstractView
 
             if (currentGap != null && PlayerInput.GetLeftMouseDown())
             {
+                if (DialogManager.CurrentMessage == introDialogs[1])
+                    introDialogs[1].AutoContinue = true;
+
                 gapExplorer.SelectNearestGap(currentGap.GetNearest(creaseIndicator.transform.position));
                 currentGap.ShowIndicator(false);
                 transform.position = gapExplorer.GetHandPosWorldSpace();
