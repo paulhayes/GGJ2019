@@ -11,6 +11,10 @@ public class SearchView : AbstractView
 
     [SerializeField] float gapSpeedModifier = 0.25f;
 
+    [SerializeField] Vector2 gapFOVMinMax;
+
+    private float currentFOV, targetFOV;
+
     private Cinemachine.CinemachineBrain cinemachineBrain;
 
     GapExplorer gapExplorer;
@@ -19,6 +23,8 @@ public class SearchView : AbstractView
     public override void Begin()
     {
         this.enabled = true;
+        currentFOV = gapFOVMinMax.y;
+        gapExplorer.SetFOV(currentFOV);
         PlayerInput.ShowMouse(false);
 
         //sofaView.enabled = false;
@@ -28,8 +34,9 @@ public class SearchView : AbstractView
     public override void End()
     {
         //sofaView.enabled = true;
-        this.enabled = false;
         PlayerInput.ShowMouse(true);
+
+        this.enabled = false;
 
         //throw new System.NotImplementedException();
     }
@@ -58,12 +65,20 @@ public class SearchView : AbstractView
         if (cinemachineBrain.IsBlending)
             return;
 
-        float speedToMove = maxPanSpeed * -PlayerInput.GetMouseX() * Time.deltaTime;
+        float speedToMove = maxPanSpeed * Time.deltaTime;
 
         if (PlayerInput.GetLeftMouse())
+        {
             speedToMove *= gapSpeedModifier;
+            gapExplorer.MoveIn(speedToMove * PlayerInput.GetMouseY());
+        } else
+        {
+            gapExplorer.MoveIn(2);
+        }
 
-        gapExplorer.MoveLeft(speedToMove);
+        gapExplorer.MoveLeft(speedToMove * -PlayerInput.GetMouseX());
+        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, gapExplorer.GetHandInGapPos().y), 0.35f);
+        gapExplorer.SetFOV(currentFOV);
 
         //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
 

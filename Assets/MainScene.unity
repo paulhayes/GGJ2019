@@ -5191,6 +5191,14 @@ PrefabInstance:
       propertyPath: maxPanSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gapFOVMinMax.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gapFOVMinMax.y
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: gaps.Array.data[0]
       value: 

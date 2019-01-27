@@ -26,18 +26,29 @@ public class GapExplorer : MonoBehaviour
         handInGapPosition.x = currentGap.NormalizedPosOnLine(currentPos);   
     }
 
-    void MoveIn(float amount){
+    public void MoveIn(float amount){
         handInGapPosition.y += amount;
         handInGapPosition.y = Mathf.Clamp01(handInGapPosition.y);
     }
 
-    void MoveOut(float amount){
+    public void MoveOut(float amount){
         MoveIn(-amount);
+    }
+
+    public void SetFOV (float fov)
+    {
+        if (currentGap)
+            currentGap.SetFOV(fov);
     }
     
     public Vector3 GetHandPosWorldSpace()
     {
         return currentPos;
+    }
+
+    public Vector3 GetHandInGapPos ()
+    {
+        return handInGapPosition;
     }
 
     public Item GetClosestItem(ref float distance){
