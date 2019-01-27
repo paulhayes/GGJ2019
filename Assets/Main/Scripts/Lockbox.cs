@@ -12,6 +12,8 @@ public class Lockbox : MonoBehaviour
 	[SerializeField] Animator openAnimator;
 	[SerializeField] Dialog TryOpenDialog;
 
+	public SearchView View;
+
 	private bool canOpen;
 	public bool IsOpening;
 
@@ -26,6 +28,25 @@ public class Lockbox : MonoBehaviour
 
 		openIndicator.SetActive (false);
 		dangerIndicator.SetActive (false);
+	}
+
+	private bool hovered;
+
+	public bool Hovered
+	{
+		get
+		{
+			return hovered;
+		}
+		set
+		{
+			hovered = value;
+
+			if (CanOpen)
+				openIndicator.SetActive (value);
+			else
+				dangerIndicator.SetActive (value);
+		}
 	}
 
 	public bool CanOpen
@@ -50,10 +71,7 @@ public class Lockbox : MonoBehaviour
 		if (IsOpening)
 			return;
 
-		if (CanOpen)
-			openIndicator.SetActive (true);
-		else
-			dangerIndicator.SetActive (true);
+		Hovered = true;
 	}
 
 	private void OnMouseExit ()
@@ -61,15 +79,16 @@ public class Lockbox : MonoBehaviour
 		if (IsOpening)
 			return;
 
-		if (CanOpen)
-			openIndicator.SetActive (false);
-		else
-			dangerIndicator.SetActive (false);
+		Hovered = false;
+	}
+
+	private void Update ()
+	{
+		Hovered = View.isActiveAndEnabled && Hovered;
 	}
 
 	private void OnMouseDown ()
 	{
-		Debug.Log ("Clicked");
 		if(CanOpen)
 		{
 			IsOpening = true;
