@@ -14,7 +14,14 @@ public class GapExplorer : MonoBehaviour
 
     public void Update()
     {
-        Shader.SetGlobalVector("_handPosition", currentPos);
+        if( currentGap == null ){
+            handInGapPosition.y *= 0.95f;
+            Shader.SetGlobalFloat("_handDepth", Mathf.Clamp01(handInGapPosition.y));
+        }
+        else {
+            Shader.SetGlobalVector("_handPosition", currentPos);
+            Shader.SetGlobalFloat("_handDepth",handInGapPosition.y);
+        }
     }
     public void MoveLeft(float amount)
     {
@@ -79,6 +86,11 @@ public class GapExplorer : MonoBehaviour
 
         currentGap = nearest;
         currentGap.Select();
+    }
+
+    public void Deselect()
+    {
+        currentGap = null;
     }
 
 }

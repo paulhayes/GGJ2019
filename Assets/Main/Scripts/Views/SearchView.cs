@@ -9,7 +9,7 @@ public class SearchView : AbstractView
 
     [SerializeField] Camera cam;
 
-    [SerializeField] float gapSpeedModifier = 0.25f;
+    [SerializeField] float gapPanSpeedMod = 0.25f, gapInOutSpeedMod = 0.25f;
 
     [SerializeField] Vector2 gapFOVMinMax;
 
@@ -24,6 +24,7 @@ public class SearchView : AbstractView
     {
         this.enabled = true;
         currentFOV = gapFOVMinMax.y;
+        gapExplorer.MoveIn(0);
         gapExplorer.SetFOV(currentFOV);
         PlayerInput.ShowMouse(false);
 
@@ -37,6 +38,7 @@ public class SearchView : AbstractView
         PlayerInput.ShowMouse(true);
 
         this.enabled = false;
+        gapExplorer.Deselect();
 
         //throw new System.NotImplementedException();
     }
@@ -47,6 +49,7 @@ public class SearchView : AbstractView
 
         sofaView = GetComponent<SofaView>();
         gapExplorer = GetComponent<GapExplorer>();
+
     }
 
     private void Start()
@@ -65,19 +68,19 @@ public class SearchView : AbstractView
         if (cinemachineBrain.IsBlending)
             return;
 
-        float speedToMove = maxPanSpeed * Time.deltaTime;
+        float speedToMoveInOut;
+        float speedToMovePan = speedToMoveInOut = maxPanSpeed * Time.deltaTime;
 
         if (PlayerInput.GetLeftMouse())
         {
-            speedToMove *= gapSpeedModifier;
-            gapExplorer.MoveIn(speedToMove * PlayerInput.GetMouseY());
-        } else
-        {
-            gapExplorer.MoveIn(2);
+            speedToMovePan *= gapPanSpeedMod;
+            speedToMoveInOut *= gapInOutSpeedMod;
         }
 
-        gapExplorer.MoveLeft(speedToMove * -PlayerInput.GetMouseX());
-        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, gapExplorer.GetHandInGapPos().y), 0.35f);
+        gapExplorer.MoveLeft(speedToMovePan * -PlayerInput.GetMouseX());
+        gapExplorer.MoveIn(speedToMovePan * -PlayerInput.GetMouseY());
+
+        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1-gapExplorer.GetHandInGapPos().y), 0.35f);
         gapExplorer.SetFOV(currentFOV);
 
         //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;

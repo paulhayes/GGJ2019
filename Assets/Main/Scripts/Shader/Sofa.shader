@@ -10,6 +10,7 @@ Shader "Custom/Sofa"
         _Metallic ("Metallic", Range(0,1)) = 0.0
         _expansionMax ("Max Expansion",Float) = 1.0
         _maxDistance ("Max Distance",Float) = 0.1
+        _maxShadow ("Max shadow",Float) = 0.3
     }
     SubShader
     {
@@ -36,10 +37,11 @@ Shader "Custom/Sofa"
         half _Metallic;
         fixed4 _Color;
 		float3 _handPosition;
-        float3 _gapDirection = float3(1,0,0);
+        float3 _gapDirection = float3(0,0,1);
 		float _handDepth;
 		float _expansionMax;
         float _maxDistance;
+        float _maxShadow;
 
         static const float oneSixthSqrt = 0.408248;
 
@@ -47,9 +49,9 @@ Shader "Custom/Sofa"
             
 			float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
             float3 expansionRatio = 0.5*_gapDirection + float3(oneSixthSqrt,oneSixthSqrt,oneSixthSqrt);
-			float expansion = max(0, _maxDistance-length(worldPos-_handPosition) ) / _maxDistance ;
+			float expansion = _handDepth * max(0, _maxDistance-length(worldPos-_handPosition) ) / _maxDistance ;
             
-            v.color *= 1-sqrt( expansion );
+            v.color *= 1-( expansion*expansion * _maxShadow );
 			v.vertex.xyz -= v.normal * expansion * expansion * expansion * _expansionMax ;
         }
 
