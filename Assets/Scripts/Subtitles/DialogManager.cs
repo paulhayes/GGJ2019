@@ -27,6 +27,10 @@ public class DialogManager : MonoBehaviour
 
 	public void Play(Dialog dialog)
 	{
+		if( dialog == null){
+			Debug.LogWarning("DialogManager received null dialog");
+			return;	
+		}
 		messageQueue.Enqueue (dialog);
 	}
 
@@ -54,7 +58,8 @@ public class DialogManager : MonoBehaviour
 
 	IEnumerator<YieldInstruction> Process()
 	{
-		messageQueue.Enqueue (PlayOnStart);
+		if(PlayOnStart)
+			messageQueue.Enqueue (PlayOnStart);
 		soundPlayer = gameObject.AddComponent<AudioSource> ();
 
 		while (true)

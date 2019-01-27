@@ -23,7 +23,8 @@ public class Item : ScriptableObject
     }
 
     public static void ResetAll(){
-        var items = GameObject.FindObjectsOfType<Item>();
+        var items = Resources.FindObjectsOfTypeAll<Item>();
+        Debug.LogFormat("Resetting {0}",items.Length);
         System.Array.ForEach(items,(i)=>i.Reset());
     }
 
