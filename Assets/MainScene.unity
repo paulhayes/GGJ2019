@@ -1040,7 +1040,7 @@ GameObject:
   - component: {fileID: 377556530}
   - component: {fileID: 377556529}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SmallWobble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3389,17 +3389,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1762557502}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
-      propertyPath: maxPanSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
-      propertyPath: gapFOVMinMax.x
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
-      propertyPath: gapFOVMinMax.y
-      value: 60
-      objectReference: {fileID: 0}
+      propertyPath: wobble
+      value: 
+      objectReference: {fileID: 377556529}
     - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: gaps.Array.data[0]
       value: 
@@ -3420,6 +3412,10 @@ PrefabInstance:
       propertyPath: gaps.Array.data[4]
       value: 
       objectReference: {fileID: 1364902233}
+    - target: {fileID: 1005133086, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: dialogManager
+      value: 
+      objectReference: {fileID: 2067973550}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
 --- !u!4 &1005133084 stripped
@@ -4685,7 +4681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 602488996}
   end: {fileID: 1203469198}
-  gapSpace: {fileID: 0}
+  gapSpace: {fileID: 11400000, guid: 72286103011874c4b8871a800219bcb0, type: 2}
   gapIndicator: {fileID: 1595292690}
   _camera: {fileID: 2027199420}
   targetPosition: {fileID: 1005133085}
