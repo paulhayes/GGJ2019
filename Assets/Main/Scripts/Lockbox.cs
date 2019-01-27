@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lockbox : MonoBehaviour
 {
-	[SerializeField] Item RequiredItem;
+	public Item RequiredItem;
 	[Space]
 	[SerializeField] GameObject unlockedIndicator;
 	[SerializeField] GameObject lockedIndicator;

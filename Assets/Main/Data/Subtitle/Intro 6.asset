@@ -20,10 +20,10 @@ MonoBehaviour:
   - Text: Right click to go back to the sofa view and pick another gap.
     Area: 0
     WriteMode: 1
-    CharacterDisplay: 0.05
+    CharacterDisplay: 0.015
   Delay: 0.25
   Duration: 1
-  ClickToContinue: 1
+  ClickToContinue: 0
   AutoContinue: 1
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 0}

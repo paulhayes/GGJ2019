@@ -40,4 +40,5 @@ public class Dialog : ScriptableObject
 	public GameObject DisplayObject;
 	[Space]
 	public Dialog Enqueues;
+	public bool FadeToBlack;
 }

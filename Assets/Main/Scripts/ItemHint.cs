@@ -11,6 +11,12 @@ public class ItemHint : MonoBehaviour
 
     GameObject currentElement;
     private Coroutine particleStopRoutine;
+
+    Camera cam;
+
+    void Awake(){
+        cam = FindObjectOfType<Camera>();
+    }
     public void Hint(Item item, Vector3 worldPos=default(Vector3))
     {
         var oldElement = currentElement;
@@ -18,6 +24,7 @@ public class ItemHint : MonoBehaviour
 
         if(worldPos!=default(Vector3)){
             transform.position = worldPos;
+            transform.LookAt(cam.transform);
         }
 
         for(int i=0;i<elements.Length;i++){
