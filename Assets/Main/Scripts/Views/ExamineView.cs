@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class ExamineView : AbstractView
 {
-    public Item currentItem;
+	[SerializeField] ItemCollection collection;
+
+	public Item currentItem;
 
     [SerializeField]
     DialogManager dialogManager;
@@ -19,7 +21,9 @@ public class ExamineView : AbstractView
 
     private void OnDialogComplete()
     {
-        searchView.Begin();
+		collection.Complete (currentItem);
+
+		searchView.Begin();
         End();
     }
 
