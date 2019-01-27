@@ -26,6 +26,5 @@ MonoBehaviour:
   Duration: 1
   ClickToContinue: 1
   PlaySound: {fileID: 0}
-  DisplayObject: {fileID: 550308921366353335, guid: f61f4914e12741f429e363acde103a43,
-    type: 3}
+  DisplayObject: {fileID: 0}
   Enqueues: {fileID: 11400000}
