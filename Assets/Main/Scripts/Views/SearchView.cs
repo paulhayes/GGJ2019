@@ -20,6 +20,8 @@ public class SearchView : AbstractView
     GapExplorer gapExplorer;
     SofaView sofaView;
 
+    PauseController pauseController;
+
     public override void Begin()
     {
         this.enabled = true;
@@ -50,6 +52,7 @@ public class SearchView : AbstractView
         sofaView = GetComponent<SofaView>();
         gapExplorer = GetComponent<GapExplorer>();
 
+        pauseController = GetComponent<PauseController>();
     }
 
     private void Start()
@@ -59,6 +62,12 @@ public class SearchView : AbstractView
 
     private void Update()
     {
+        if (PlayerInput.GetPauseButtonDown())
+            PlayerInput.ShowMouse(pauseController.IsPaused());
+
+        if (pauseController.IsPaused())
+            return;
+
         if (PlayerInput.GetRightMouseDown())
         {
             sofaView.Begin();

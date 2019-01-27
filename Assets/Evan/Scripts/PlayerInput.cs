@@ -42,4 +42,9 @@ public class PlayerInput
         Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = visible;
     }
+
+    public static bool GetPauseButtonDown ()
+    {
+        return Input.GetKeyDown(KeyCode.Escape);
+    }
 }
