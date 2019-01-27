@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BoxKey
   m_EditorClassIdentifier: 
   dialog: {fileID: 11400000, guid: bda2a9b24859c76419b95bf4c08edb08, type: 2}
-  unlockedRequired: 2
+  unlockedRequired: 3
   hasBeenFound: 0
