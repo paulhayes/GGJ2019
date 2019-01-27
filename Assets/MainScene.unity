@@ -1571,7 +1571,7 @@ GameObject:
   - component: {fileID: 306259011}
   - component: {fileID: 306259010}
   - component: {fileID: 306259009}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Lockbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5717,6 +5717,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2dda3657cf2d31e4c8a3773b60d6e3c2,
         type: 2}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: whatIsLockbox.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: introDialogs.Array.size
       value: 4

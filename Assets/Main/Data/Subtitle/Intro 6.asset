@@ -22,7 +22,7 @@ MonoBehaviour:
     WriteMode: 1
     CharacterDisplay: 0.015
   Delay: 0.25
-  Duration: 1
+  Duration: 2
   ClickToContinue: 0
   AutoContinue: 1
   PlaySound: {fileID: 0}

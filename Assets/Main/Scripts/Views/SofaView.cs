@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SofaView : AbstractView
 {
-    public static bool triggerTutorial = false;
+    public static bool triggerTutorial = true;
 
     [SerializeField]
     private Camera cam;
 
     [SerializeField]
-    private LayerMask whatIsGapSpace;
+    private LayerMask whatIsGapSpace, whatIsLockbox;
 
     [SerializeField]
     private GameObject creaseIndicator;
@@ -23,6 +23,8 @@ public class SofaView : AbstractView
     [SerializeField] DialogManager dialogManager;
 
     [SerializeField] Dialog[] introDialogs;
+
+    Lockbox lockbox;
 
     private GapExplorer gapExplorer;
     private SearchView searchView;
@@ -90,43 +92,68 @@ public class SofaView : AbstractView
         Ray ray = cam.ScreenPointToRay(PlayerInput.GetMousePos());
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsGapSpace))
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsLockbox) && DialogManager.CurrentMessage == null)
         {
-            if (currentGap == null || currentGap.GetCollider() != hit.collider) {
-                if (currentGap != null)
-                    currentGap.ShowIndicator(false);
+            if (!lockbox)
+                lockbox = hit.collider.GetComponent<Lockbox>();
 
-                currentGap = hit.collider.GetComponent<Gap>();
+            lockbox.Hovered = true;
+            if (PlayerInput.GetLeftMouseDown())
+                lockbox.OpenBox();
 
-                if (currentGap != null)
-                    currentGap.ShowIndicator(true);
-            }
-
-            SetIndicatorPos(hit.point, hit.collider);
-
-            if (currentGap != null && PlayerInput.GetLeftMouseDown())
-            {
-                if (DialogManager.CurrentMessage == introDialogs[1])
-                    introDialogs[1].AutoContinue = true;
-
-                gapExplorer.SelectNearestGap(currentGap.GetNearest(creaseIndicator.transform.position));
-                currentGap.ShowIndicator(false);
-                transform.position = gapExplorer.GetHandPosWorldSpace();
-
-                searchView.Begin();
-                End();
-            } else
-            {
-                creaseIndicator.SetActive(true);
-            }
-        }
-        else
-        {
             if (currentGap != null)
                 currentGap.ShowIndicator(false);
 
             currentGap = null;
+        } else
+        {
+            if (lockbox)
+                lockbox.Hovered = false;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsGapSpace))
+            {
+                if (currentGap == null || currentGap.GetCollider() != hit.collider)
+                {
+                    if (currentGap != null)
+                        currentGap.ShowIndicator(false);
+
+                    currentGap = hit.collider.GetComponent<Gap>();
+
+                    if (currentGap != null)
+                        currentGap.ShowIndicator(true);
+                }
+
+                SetIndicatorPos(hit.point, hit.collider);
+
+                if (currentGap != null && PlayerInput.GetLeftMouseDown())
+                {
+                    if (DialogManager.CurrentMessage == introDialogs[1])
+                        introDialogs[1].AutoContinue = true;
+
+                    gapExplorer.SelectNearestGap(currentGap.GetNearest(creaseIndicator.transform.position));
+                    currentGap.ShowIndicator(false);
+                    transform.position = gapExplorer.GetHandPosWorldSpace();
+
+                    searchView.Begin();
+                    End();
+                }
+                else
+                {
+                    creaseIndicator.SetActive(true);
+                }
+            }
+            else
+            {
+                if (currentGap != null)
+                    currentGap.ShowIndicator(false);
+
+                currentGap = null;
+            }
         }
+
+        
+
+
     }
 
     void SetIndicatorPos (Vector3 hitPos, Collider hitCollider)

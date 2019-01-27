@@ -72,52 +72,52 @@ public class Lockbox : MonoBehaviour
 		}
 	}
 
-	private void OnMouseEnter ()
-	{
-		if (IsOpening)
-			return;
+    public void OpenBox()
+    {
+        if (CanOpen)
+        {
+            IsOpening = true;
+            openAnimator.SetTrigger("Play");
+            _camera.gameObject.SetActive(true);
+            openIndicator.SetActive(false);
+            dangerIndicator.SetActive(false);
 
-		Hovered = true;
-	}
+            if (unlockedIndicator != null)
+                unlockedIndicator.SetActive(false);
 
-	private void OnMouseExit ()
-	{
-		if (IsOpening)
-			return;
+            if (lockedIndicator != null)
+                lockedIndicator.SetActive(false);
 
-		Hovered = false;
-	}
+            DialogManager.Instance.Play(DialogAfterOpen);
 
-	private void Update ()
+            StartCoroutine(EndingRoutine());
+        }
+        else
+        {
+            if (TryOpenDialog != null)
+                DialogManager.Instance.Play(TryOpenDialog);
+        }
+    }
+
+    //private void OnMouseEnter ()
+    //{
+    //	if (IsOpening)
+    //		return;
+
+    //	Hovered = true;
+    //}
+
+    //private void OnMouseExit ()
+    //{
+    //	if (IsOpening)
+    //		return;
+
+    //	Hovered = false;
+    //}
+
+    private void Update ()
 	{
 		Hovered = View.isActiveAndEnabled && Hovered;
-	}
-
-	private void OnMouseDown ()
-	{
-		if(CanOpen)
-		{
-			IsOpening = true;
-			openAnimator.SetTrigger ("Play");
-			_camera.gameObject.SetActive (true);
-			openIndicator.SetActive (false);
-			dangerIndicator.SetActive (false);
-
-			if (unlockedIndicator != null)
-				unlockedIndicator.SetActive (false);
-
-			if(lockedIndicator != null)
-				lockedIndicator.SetActive (false);
-
-			DialogManager.Instance.Play (DialogAfterOpen);
-
-			StartCoroutine (EndingRoutine());
-		}
-		else
-		{
-			if (TryOpenDialog != null)
-				DialogManager.Instance.Play (TryOpenDialog);
-		}
 	}
 
 	IEnumerator EndingRoutine()
