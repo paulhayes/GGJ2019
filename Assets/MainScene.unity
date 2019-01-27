@@ -5199,6 +5199,14 @@ PrefabInstance:
       propertyPath: gapFOVMinMax.y
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gapSpeedModifier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: gapInOutSpeedMod
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: gaps.Array.data[0]
       value: 
