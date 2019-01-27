@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87631502af664c44bb2c286f102e4d8d, type: 3}
   m_Name: Sock Pos 1
   m_EditorClassIdentifier: 
-  position: {x: 0.2, y: 0.5}
+  position: {x: 0.2, y: 1}
   item: {fileID: 11400000, guid: 9375b27d64fbdf14493f6bf6e7f3e042, type: 2}

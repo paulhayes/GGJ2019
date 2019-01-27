@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87631502af664c44bb2c286f102e4d8d, type: 3}
   m_Name: Spliff Pos 1
   m_EditorClassIdentifier: 
-  position: {x: 0.3, y: 0.8}
+  position: {x: 0.3, y: 1}
   item: {fileID: 11400000, guid: 6ca7f434a14b76645a0c985f46355e37, type: 2}

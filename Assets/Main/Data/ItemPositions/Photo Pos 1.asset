@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87631502af664c44bb2c286f102e4d8d, type: 3}
   m_Name: Photo Pos 1
   m_EditorClassIdentifier: 
-  position: {x: 0.4, y: 0.2}
+  position: {x: 0.4, y: 1}
   item: {fileID: 11400000, guid: de05364b671a6e24ab49067e8243a366, type: 2}

@@ -38,7 +38,6 @@ public class DialogManager : MonoBehaviour
 		messageQueue.Enqueue (dialog);
 		if (routine == null)
 			routine = StartCoroutine (Process());
-
 	}
 
 	private void Awake ()
@@ -54,8 +53,7 @@ public class DialogManager : MonoBehaviour
 			findDisplay.Display.gameObject.SetActive (false);
 		}
 		soundPlayer = gameObject.AddComponent<AudioSource> ();
-
-
+		
 		if(PlayOnStart)
 			Play(PlayOnStart);
 	}
@@ -68,8 +66,6 @@ public class DialogManager : MonoBehaviour
 
 	IEnumerator<YieldInstruction> Process()
 	{
-		IsProcessing = true;
-		
 		while (true)
 		{
 			if (messageQueue.Count == 0)
@@ -77,6 +73,7 @@ public class DialogManager : MonoBehaviour
 				IsProcessing = false;
 				if (OnFinished != null)
 					OnFinished ();
+				routine = null;
 				yield break;
 			}
 
@@ -89,7 +86,7 @@ public class DialogManager : MonoBehaviour
 			{
 				displayOptions.CachePosiiton = 0;
 			}
-
+			
 			yield return new WaitForSeconds (currentMessage.Delay);
 			if (currentMessage.PlaySound != null)
 				soundPlayer.PlayOneShot (currentMessage.PlaySound);

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87631502af664c44bb2c286f102e4d8d, type: 3}
   m_Name: MPLetter Pos 1
   m_EditorClassIdentifier: 
-  position: {x: 0.3, y: 0.6}
+  position: {x: 0.3, y: 1}
   item: {fileID: 11400000, guid: 31dd6cf63c63f5349b182869882e55ca, type: 2}
