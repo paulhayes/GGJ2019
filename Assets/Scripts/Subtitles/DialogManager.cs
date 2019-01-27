@@ -175,6 +175,8 @@ public class DialogManager : MonoBehaviour
 					ObjectCanvas.Instance.Clear ();
 				}
 			}
+			else if (nextMessage == null)
+				ObjectCanvas.Instance.Clear ();
 
 			foreach (var time in new TimedLoop (fadeOutTime))
 			{
