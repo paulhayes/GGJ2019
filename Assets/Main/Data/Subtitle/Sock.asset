@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Sock
   m_EditorClassIdentifier: 
   Displays:
-  - Text: I suppose this solves that mystery then
+  - Text: I suppose this solves that mystery then.
     Area: 0
     WriteMode: 0
     CharacterDisplay: 0
   Delay: 0
   Duration: 2
   ClickToContinue: 1
+  AutoContinue: 1
   PlaySound: {fileID: 8300000, guid: 49b60b87424a8ea4e82d24ef09694ce5, type: 3}
   DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}
+  FadeToBlack: 0
