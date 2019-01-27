@@ -15,6 +15,7 @@ public class GapExplorer : MonoBehaviour
     public void Update()
     {
         Shader.SetGlobalVector("_handPosition", currentPos);
+        Shader.SetGlobalFloat("_handDepth",handInGapPosition.y);
     }
     public void MoveLeft(float amount)
     {

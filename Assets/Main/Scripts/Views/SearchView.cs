@@ -24,7 +24,7 @@ public class SearchView : AbstractView
     {
         this.enabled = true;
         currentFOV = gapFOVMinMax.y;
-        gapExplorer.MoveIn(2);
+        gapExplorer.MoveIn(0);
         gapExplorer.SetFOV(currentFOV);
         PlayerInput.ShowMouse(false);
 
@@ -76,9 +76,9 @@ public class SearchView : AbstractView
         }
 
         gapExplorer.MoveLeft(speedToMovePan * -PlayerInput.GetMouseX());
-        gapExplorer.MoveIn(speedToMovePan * PlayerInput.GetMouseY());
+        gapExplorer.MoveIn(speedToMovePan * -PlayerInput.GetMouseY());
 
-        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, gapExplorer.GetHandInGapPos().y), 0.35f);
+        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1-gapExplorer.GetHandInGapPos().y), 0.35f);
         gapExplorer.SetFOV(currentFOV);
 
         //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
