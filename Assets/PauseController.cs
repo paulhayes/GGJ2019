@@ -14,12 +14,11 @@ public class PauseController : MonoBehaviour
         if (PlayerInput.GetPauseButtonDown())
         {
             pauseView.Toggle();
-            isPaused = !isPaused;
         }
     }
 
     public bool IsPaused ()
     {
-        return isPaused;
+        return pauseView.IsPaused();
     }
 }

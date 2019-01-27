@@ -13,6 +13,10 @@ public class SearchView : AbstractView
 
     [SerializeField] Vector2 gapFOVMinMax;
 
+    [SerializeField] SettingFloat mouseSens;
+
+    private bool isPaused;
+
     private float currentFOV, targetFOV;
 
     private Cinemachine.CinemachineBrain cinemachineBrain;
@@ -61,12 +65,25 @@ public class SearchView : AbstractView
     }
 
     private void Update()
-    {
-        if (PlayerInput.GetPauseButtonDown())
-            PlayerInput.ShowMouse(pauseController.IsPaused());
+    {            
 
         if (pauseController.IsPaused())
+        {
+            if (!isPaused)
+            {
+                isPaused = true;
+                PlayerInput.ShowMouse(true);
+            }
+
             return;
+        } else
+        {
+            if (isPaused == true)
+                PlayerInput.ShowMouse(false);
+        }
+
+        if (isPaused != pauseController.IsPaused())
+            isPaused = pauseController.IsPaused();
 
         if (PlayerInput.GetRightMouseDown())
         {
@@ -78,7 +95,7 @@ public class SearchView : AbstractView
             return;
 
         float speedToMoveInOut;
-        float speedToMovePan = speedToMoveInOut = maxPanSpeed * Time.deltaTime;
+        float speedToMovePan = speedToMoveInOut = maxPanSpeed * mouseSens.value * Time.deltaTime;
 
         if (PlayerInput.GetLeftMouse())
         {
