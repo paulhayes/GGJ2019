@@ -20,6 +20,8 @@ public class SearchView : AbstractView
 
     [SerializeField] AudioSource seachingSoundSource;
 
+    [SerializeField] ItemHint itemHint;
+
 
     private bool isPaused;
 
@@ -120,14 +122,15 @@ public class SearchView : AbstractView
         
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
+                hoverItem = closestItem;
                 wobble.GenerateImpulse();
                 OnOverItem(hoverItem);
             }
-            hoverItem = closestItem;
-            Debug.LogFormat("Over {0}",hoverItem.name);
         }
         else {
-            OnOutItem(hoverItem);
+            if(hoverItem){
+                OnOutItem(hoverItem);
+            }
             hoverItem = null;
         }        
 
@@ -196,10 +199,14 @@ public class SearchView : AbstractView
 
     private void OnOverItem(Item hoverItem)
     {
-        
+        //Debug.LogFormat("Over {0}",hoverItem.name);
+
+        itemHint.Hint(hoverItem);        
     }
     private void OnOutItem(Item hoverItem)
     {
+        //Debug.LogFormat("Out");
+        itemHint.Hint(null);
     }
 
 }
