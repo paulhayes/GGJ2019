@@ -22,6 +22,9 @@ public class DialogManager : MonoBehaviour
 	public float fadeInTime = 0.5f;
 	public float fadeOutTime = 0.5f;
 
+	public bool IsProcessing;
+	public event Action OnFinished;
+
 	private Queue<Dialog> messageQueue = new Queue<Dialog> ();
 	private AudioSource soundPlayer;
 
@@ -66,7 +69,11 @@ public class DialogManager : MonoBehaviour
 		{
 			while (messageQueue.Count == 0)
 			{
+				IsProcessing = false;
+				if (OnFinished != null)
+					OnFinished ();
 				yield return null;
+				IsProcessing = true;
 			}
 
 			var currentMessage = messageQueue.Dequeue ();
