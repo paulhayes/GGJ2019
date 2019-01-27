@@ -13,12 +13,20 @@ public class SearchView : AbstractView
 
     [SerializeField] Vector2 gapFOVMinMax;
 
+    [SerializeField] float maxGrabDistance = 0.1f;
+
+    [SerializeField] Cinemachine.CinemachineImpulseSource wobble;
+
     private float currentFOV, targetFOV;
 
     private Cinemachine.CinemachineBrain cinemachineBrain;
 
     GapExplorer gapExplorer;
     SofaView sofaView;
+
+    Item holdingItem; 
+    Item hoverItem;
+    ExamineView examineView;
 
     public override void Begin()
     {
@@ -27,7 +35,7 @@ public class SearchView : AbstractView
         gapExplorer.MoveIn(0);
         gapExplorer.SetFOV(currentFOV);
         PlayerInput.ShowMouse(false);
-
+        holdingItem = null;
         //sofaView.enabled = false;
         //throw new System.NotImplementedException();
     }
@@ -48,6 +56,7 @@ public class SearchView : AbstractView
         cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
 
         sofaView = GetComponent<SofaView>();
+        examineView = GetComponent<ExamineView>();
         gapExplorer = GetComponent<GapExplorer>();
 
     }
@@ -63,19 +72,56 @@ public class SearchView : AbstractView
         {
             sofaView.Begin();
             End();
-        }
+        }        
+
+
 
         if (cinemachineBrain.IsBlending)
             return;
 
+        float dist = 0;
+        Item closestItem = gapExplorer.GetClosestItem( ref dist );
+        
+
+        if( dist <= maxGrabDistance ){
+            if( closestItem != hoverItem){
+                wobble.GenerateImpulse();
+            }
+            hoverItem = closestItem;
+            Debug.LogFormat("Over {0}",hoverItem.name);
+        }
+        else {
+            hoverItem = null;
+        }        
+
+        if( PlayerInput.GetLeftMouseDown() )
+        {            
+            holdingItem = closestItem;            
+        }
+
+        if( holdingItem && !PlayerInput.GetLeftMouse() ){
+            if( gapExplorer.GetHandInGapPos().y == 0 ){
+                examineView.currentItem = holdingItem;
+                examineView.Begin();
+                End();
+            }
+            else {
+                holdingItem = null;
+            }
+        }
+
         float speedToMoveInOut;
         float speedToMovePan = speedToMoveInOut = maxPanSpeed * Time.deltaTime;
 
-        if (PlayerInput.GetLeftMouse())
+        if (holdingItem && PlayerInput.GetLeftMouse())
         {
+            
             speedToMovePan *= gapPanSpeedMod;
             speedToMoveInOut *= gapInOutSpeedMod;
+
+
         }
+
 
         gapExplorer.MoveLeft(speedToMovePan * -PlayerInput.GetMouseX());
         gapExplorer.MoveIn(speedToMovePan * -PlayerInput.GetMouseY());

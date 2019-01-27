@@ -6,11 +6,22 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GapSpace : ScriptableObject
 {
-    public ItemPosition[] positions;
+    [UnityEngine.Serialization.FormerlySerializedAs("positions")]
+    public ItemPosition[] items;
 
     public Item GetClosestItem(Vector2 pos, ref float distance)
     {
-        throw new NotImplementedException();     
+        Item closestItem = null;
+        float closestDistSqr = float.MaxValue;
+        for(int i=0;i<items.Length;i++){
+            float distSqr = (pos-items[i].position).sqrMagnitude;
+            if( distSqr < closestDistSqr ){
+                closestItem = items[i].item;
+            }
+        }
+
+        distance = Mathf.Sqrt(closestDistSqr);
+        return closestItem;
     }
 
 }

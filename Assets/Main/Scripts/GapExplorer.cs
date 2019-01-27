@@ -64,9 +64,12 @@ public class GapExplorer : MonoBehaviour
     }
 
     public Item GetClosestItem(ref float distance){
+        if( currentGap == null ){
+            distance = float.MaxValue;
+            return null;
+        }
         return currentGap.GetGapSpace().GetClosestItem(handInGapPosition, ref distance);
     }
-
 
     public void SelectNearestGap(Vector3 pos)
     {

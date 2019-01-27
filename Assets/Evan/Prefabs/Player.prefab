@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 6518046063291054451}
   - component: {fileID: 4630489639443252466}
   - component: {fileID: 1828557572}
+  - component: {fileID: 1005133086}
   - component: {fileID: 1828557571}
   m_Layer: 0
   m_Name: Player
@@ -281,7 +282,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSideThreshold: 0.15
-  maxPanSpeed: 1
+  maxPanSpeed: 0.5
+  cam: {fileID: 0}
+  gapPanSpeedMod: 0.25
+  gapInOutSpeedMod: 0.25
+  gapFOVMinMax: {x: 45, y: 60}
+  maxGrabDistance: 0.1
+  wobble: {fileID: 0}
+--- !u!114 &1005133086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6518046063291054448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4567daba0ac5e0a4a91eb1db72a72778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentItem: {fileID: 0}
+  dialogManager: {fileID: 0}
 --- !u!114 &1828557571
 MonoBehaviour:
   m_ObjectHideFlags: 0
