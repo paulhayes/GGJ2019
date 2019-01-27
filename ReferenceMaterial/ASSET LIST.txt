@@ -1,3 +1,3 @@
-ASSET LIST (* represent priority)Ticket Stub*Receipt - done*Coin -doneDried joint  *Bottle cap - doneLetter Half a biscuit*Yale Key - done Sock *Polariod Photo -done*Small Key - done
+ASSET LIST (* represent priority)Ticket Stub*Receipt - done*Coin -doneDried joint   -done*Bottle cap - doneLetter - doneHalf a biscuit - done*Yale Key - done Sock - done*Polariod Photo -done*Small Key - done
 
-*Lock Box - done, needs textureTooth
+*Lock Box - done, needs textureTooth - done
