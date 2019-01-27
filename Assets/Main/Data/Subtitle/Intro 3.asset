@@ -20,7 +20,7 @@ MonoBehaviour:
   - Text: Using the mouse you can move around the gap in the sofa.
     Area: 0
     WriteMode: 1
-    CharacterDisplay: 0.05
+    CharacterDisplay: 0.015
   Delay: 0.25
   Duration: 1
   ClickToContinue: 1

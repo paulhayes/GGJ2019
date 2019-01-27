@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
-  m_Name: Receipt
+  m_Name: Outro 1
   m_EditorClassIdentifier: 
   Displays:
-  - Text: Never could get that curry stain out of the carpet, sorry Emma. Smelled
-      nice though.
+  - Text: I miss you guys...
     Area: 0
-    WriteMode: 0
-    CharacterDisplay: 0
-  Delay: 0
-  Duration: 2
-  ClickToContinue: 1
-  AutoContinue: 1
-  PlaySound: {fileID: 8300000, guid: de863bac1e663ba409a48c3f8c01c671, type: 3}
-  DisplayObject: {fileID: 550308921366353335, guid: f61f4914e12741f429e363acde103a43,
-    type: 3}
+    WriteMode: 1
+    CharacterDisplay: 0.1
+  Delay: 6
+  Duration: 4
+  ClickToContinue: 0
+  PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}

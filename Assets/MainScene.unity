@@ -5641,6 +5641,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
         type: 3}
+      propertyPath: introDialogs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 1149481604}
@@ -5654,6 +5659,63 @@ PrefabInstance:
       propertyPath: cinemachineBrain
       value: 
       objectReference: {fileID: 1762557504}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: dialogManager
+      value: 
+      objectReference: {fileID: 2067973550}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: introFirst
+      value: 
+      objectReference: {fileID: 11400000, guid: 7274dfa25fea5d545a1970836697c7ca,
+        type: 2}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: introFreezeSofa
+      value: 
+      objectReference: {fileID: 11400000, guid: 7274dfa25fea5d545a1970836697c7ca,
+        type: 2}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: introFreezeSearch
+      value: 
+      objectReference: {fileID: 11400000, guid: 27f4be0e36cb32446939f6056ad4b6a8,
+        type: 2}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: introDialogs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7274dfa25fea5d545a1970836697c7ca,
+        type: 2}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: introDialogs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 64deb11ac79ccf543aa3a34717458533,
+        type: 2}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: introDialogs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 27f4be0e36cb32446939f6056ad4b6a8,
+        type: 2}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: introDialogs.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 33bb2be77c4b17c4fb81cb7da5bce7a6,
+        type: 2}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: introDialogs.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2dda3657cf2d31e4c8a3773b60d6e3c2,
+        type: 2}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: introDialogs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: cam
       value: 
@@ -5705,6 +5767,26 @@ PrefabInstance:
       propertyPath: grabMaxShakeAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: introDialogs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 27f4be0e36cb32446939f6056ad4b6a8,
+        type: 2}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: introDialogs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 33bb2be77c4b17c4fb81cb7da5bce7a6,
+        type: 2}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: introDialogs.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2dda3657cf2d31e4c8a3773b60d6e3c2,
+        type: 2}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: introDialogs.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 218572e5548225e4984e0af5185a6568,
+        type: 2}
     - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: holeGrowthCurve.m_Curve.Array.size
       value: 3
@@ -5797,6 +5879,11 @@ PrefabInstance:
       propertyPath: collection
       value: 
       objectReference: {fileID: 412116575}
+    - target: {fileID: 1005133086, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: introDialog
+      value: 
+      objectReference: {fileID: 11400000, guid: 218572e5548225e4984e0af5185a6568,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
 --- !u!4 &1005133084 stripped
@@ -12448,7 +12535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2393adb92a8e34e9e0219c94c10842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnStart: {fileID: 11400000, guid: 7274dfa25fea5d545a1970836697c7ca, type: 2}
+  PlayOnStart: {fileID: 0}
   Displays:
   - Area: 0
     Display: {fileID: 169100012}

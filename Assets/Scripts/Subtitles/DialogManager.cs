@@ -170,7 +170,14 @@ public class DialogManager : MonoBehaviour
 				while (!PlayerInput.GetLeftMouseDown ())
 					yield return null;
 				ClickToContinueCurve.TargetValue = 0.0f;
-			}
+			} else
+            {
+                while (!CurrentMessage.AutoContinue)
+                    yield return null;
+
+            }
+
+            
 
 			// Get the next message and only fade out if the next message is not the same.
 			Dialog nextMessage = null;
