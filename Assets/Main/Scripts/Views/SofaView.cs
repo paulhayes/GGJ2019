@@ -16,12 +16,12 @@ public class SofaView : AbstractView
     [SerializeField]
     private Cinemachine.CinemachineVirtualCamera introCam;
 
+    [SerializeField] private Cinemachine.CinemachineBrain cinemachineBrain;
+
     private GapExplorer gapExplorer;
     private SearchView searchView;
 
     private PauseController pauseController;
-
-    private Cinemachine.CinemachineBrain cinemachineBrain;
 
     private Gap currentGap;
 
@@ -53,7 +53,7 @@ public class SofaView : AbstractView
 
         pauseController = GetComponent<PauseController>();
 
-        cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
+        //cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
     }
 
     private void Start()

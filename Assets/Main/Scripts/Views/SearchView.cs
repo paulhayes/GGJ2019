@@ -10,6 +10,8 @@ public class SearchView : AbstractView
 
     [SerializeField] Camera cam;
 
+    [SerializeField] private Cinemachine.CinemachineBrain cinemachineBrain;
+
     [SerializeField] float gapPanSpeedMod = 0.25f, gapInOutSpeedMod = 0.25f;
 
     [SerializeField] Vector2 gapFOVMinMax;
@@ -33,7 +35,6 @@ public class SearchView : AbstractView
 
     private float currentFOV, targetFOV;
 
-    private Cinemachine.CinemachineBrain cinemachineBrain;
 
     GapExplorer gapExplorer;
     SofaView sofaView;
@@ -70,7 +71,7 @@ public class SearchView : AbstractView
 
     private void Awake()
     {
-        cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
+        //cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
 
         sofaView = GetComponent<SofaView>();
         examineView = GetComponent<ExamineView>();
@@ -183,7 +184,8 @@ public class SearchView : AbstractView
         gapExplorer.MoveIn(speedToMoveInOut * -PlayerInput.GetMouseY());
 
         currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1-gapExplorer.GetHandInGapPos().y), 0.35f);
-        gapExplorer.SetFOV(currentFOV);
+        cam.fieldOfView = currentFOV;
+        //gapExplorer.SetFOV(currentFOV);
 
         //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
 
