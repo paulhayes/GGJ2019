@@ -53,7 +53,6 @@ public class ExamineView : AbstractView
         dialogManager.Play(currentItem.dialog);
         
 
-        Debug.Log("HEY");
     }
 
     public override void End()
