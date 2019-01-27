@@ -27,6 +27,9 @@ public class SofaView : AbstractView
     public override void Begin()
     {
         this.enabled = true;
+
+        if (currentGap)
+            currentGap.Deselect();
         //searchView.enabled = false;
 
         //throw new System.NotImplementedException();
