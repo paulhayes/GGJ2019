@@ -11,10 +11,14 @@ public class ItemHint : MonoBehaviour
 
     GameObject currentElement;
     private Coroutine particleStopRoutine;
-    public void Hint(Item item)
+    public void Hint(Item item, Vector3 worldPos=default(Vector3))
     {
         var oldElement = currentElement;
         currentElement = null;
+
+        if(worldPos!=default(Vector3)){
+            transform.position = worldPos;
+        }
 
         for(int i=0;i<elements.Length;i++){
             if( elements[i].item == item){

@@ -74,7 +74,7 @@ public class SearchView : AbstractView
     private void Awake()
     {
         //cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
-
+        transform.SetParent(null);
         sofaView = GetComponent<SofaView>();
         examineView = GetComponent<ExamineView>();
         gapExplorer = GetComponent<GapExplorer>();
@@ -245,7 +245,7 @@ public class SearchView : AbstractView
     {
         //Debug.LogFormat("Over {0}",hoverItem.name);
 
-        itemHint.Hint(hoverItem);        
+        itemHint.Hint(hoverItem,gapExplorer.GetHandPosWorldSpace());     
     }
     private void OnOutItem(Item hoverItem)
     {
