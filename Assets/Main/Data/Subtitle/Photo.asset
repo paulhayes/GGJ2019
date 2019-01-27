@@ -16,6 +16,12 @@ MonoBehaviour:
   - Text: Hey June. Hah! You were freezing in that dress, completely forgot about
       the wind-chill. Always account for the wind-chill.
     Area: 0
+    WriteMode: 0
+    CharacterDisplay: 0
   Delay: 0
   Duration: 2
+  ClickToContinue: 0
   PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 8283791770267369280, guid: 0b893e576afda674792a823f1a085845,
+    type: 3}
+  Enqueues: {fileID: 0}

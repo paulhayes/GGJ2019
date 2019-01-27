@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff36a39abc98ed47a835ab1733b036b, type: 3}
-  m_Name: HalfBiscuit
+  m_Script: {fileID: 11500000, guid: 87631502af664c44bb2c286f102e4d8d, type: 3}
+  m_Name: BottleCap Pos 01
   m_EditorClassIdentifier: 
-  dialog: {fileID: 11400000, guid: 1b1ca77844de76c48a9861b044c03e8e, type: 2}
-  hasBeenFound: 0
+  position: {x: 0.5, y: 0.5}
+  item: {fileID: 11400000, guid: bf9a0d47aaaa92c4b929e29af9bd2585, type: 2}

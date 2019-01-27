@@ -16,6 +16,12 @@ MonoBehaviour:
   - Text: "You had nice soft shoulders to rest on when I was tired\u2026I could really
       use a drink about now"
     Area: 0
+    WriteMode: 0
+    CharacterDisplay: 0
   Delay: 0
   Duration: 2
+  ClickToContinue: 0
   PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 9067989953065162684, guid: 2437714b9077e3546bfd31ada6c4859f,
+    type: 3}
+  Enqueues: {fileID: 0}

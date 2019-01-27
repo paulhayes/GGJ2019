@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff36a39abc98ed47a835ab1733b036b, type: 3}
   m_Name: Photo
   m_EditorClassIdentifier: 
-  dialog: {fileID: 0}
+  dialog: {fileID: 11400000, guid: ad01cfd1d38a562419a239dfc3786cff, type: 2}
   hasBeenFound: 0

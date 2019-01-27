@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: Coin
   m_EditorClassIdentifier: 
   Displays:
-  - Text: Never could get that curry stain out of the carpet, sorry Emma. Smelled
-      nice though.
+  - Text: "Probably a gift from the hole in Simon\u2019s pocket, I don\u2019t think
+      this is legal tender any more."
     Area: 0
+    WriteMode: 0
+    CharacterDisplay: 0
   Delay: 0
   Duration: 2
+  ClickToContinue: 0
   PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 5220427715934903604, guid: 220ad3559a63d7e4f8990401c0110865,
+    type: 3}
+  Enqueues: {fileID: 0}

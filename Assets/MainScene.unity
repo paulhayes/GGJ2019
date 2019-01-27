@@ -3810,6 +3810,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 2b710e322b195aa4796d6305da19d7b9,
         type: 2}
+    - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
+      propertyPath: maxGrabDistance
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: gaps.Array.data[0]
       value: 
@@ -9071,6 +9075,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   fadeInTime: 0.5
   fadeOutTime: 0.5
+  IsProcessing: 0
 --- !u!1 &2139857246
 GameObject:
   m_ObjectHideFlags: 3

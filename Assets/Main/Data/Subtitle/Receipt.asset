@@ -16,6 +16,12 @@ MonoBehaviour:
   - Text: Never could get that curry stain out of the carpet, sorry Emma. Smelled
       nice though.
     Area: 0
+    WriteMode: 0
+    CharacterDisplay: 0
   Delay: 0
   Duration: 2
+  ClickToContinue: 0
   PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 550308921366353335, guid: f61f4914e12741f429e363acde103a43,
+    type: 3}
+  Enqueues: {fileID: 0}

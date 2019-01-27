@@ -15,6 +15,12 @@ MonoBehaviour:
   Displays:
   - Text: Wow, sorry David I guess I DID have your door key.
     Area: 0
+    WriteMode: 0
+    CharacterDisplay: 0
   Delay: 0
   Duration: 2
+  ClickToContinue: 0
   PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 9049146891420208113, guid: d08fd8669121b37408b0bb7aba3f9349,
+    type: 3}
+  Enqueues: {fileID: 0}

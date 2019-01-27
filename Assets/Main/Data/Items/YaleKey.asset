@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff36a39abc98ed47a835ab1733b036b, type: 3}
   m_Name: YaleKey
   m_EditorClassIdentifier: 
-  dialog: {fileID: 0}
+  dialog: {fileID: 11400000, guid: 38c18a527b2a0314181c2dbe2ccd5a0b, type: 2}
   hasBeenFound: 0

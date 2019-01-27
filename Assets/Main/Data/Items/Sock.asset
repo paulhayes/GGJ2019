@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff36a39abc98ed47a835ab1733b036b, type: 3}
   m_Name: Sock
   m_EditorClassIdentifier: 
-  dialog: {fileID: 0}
+  dialog: {fileID: 11400000, guid: 44f4928e4ba911341b9681612d4a7e5e, type: 2}
   hasBeenFound: 0
