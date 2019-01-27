@@ -13,6 +13,10 @@ public class SearchView : AbstractView
 
     [SerializeField] Vector2 gapFOVMinMax;
 
+    [SerializeField] SettingFloat mouseSens;
+
+    private bool isPaused;
+
     [SerializeField] float maxGrabDistance = 0.1f;
 
     [SerializeField] Cinemachine.CinemachineImpulseSource wobble;
@@ -23,6 +27,8 @@ public class SearchView : AbstractView
 
     GapExplorer gapExplorer;
     SofaView sofaView;
+
+    PauseController pauseController;
 
     Item holdingItem; 
     Item hoverItem;
@@ -59,6 +65,7 @@ public class SearchView : AbstractView
         examineView = GetComponent<ExamineView>();
         gapExplorer = GetComponent<GapExplorer>();
 
+        pauseController = GetComponent<PauseController>();
     }
 
     private void Start()
@@ -67,7 +74,26 @@ public class SearchView : AbstractView
     }
 
     private void Update()
-    {
+    {            
+
+        if (pauseController.IsPaused())
+        {
+            if (!isPaused)
+            {
+                isPaused = true;
+                PlayerInput.ShowMouse(true);
+            }
+
+            return;
+        } else
+        {
+            if (isPaused == true)
+                PlayerInput.ShowMouse(false);
+        }
+
+        if (isPaused != pauseController.IsPaused())
+            isPaused = pauseController.IsPaused();
+
         if (PlayerInput.GetRightMouseDown())
         {
             sofaView.Begin();
@@ -111,7 +137,7 @@ public class SearchView : AbstractView
         }
 
         float speedToMoveInOut;
-        float speedToMovePan = speedToMoveInOut = maxPanSpeed * Time.deltaTime;
+        float speedToMovePan = speedToMoveInOut = maxPanSpeed * mouseSens.value * Time.deltaTime;
 
         if (holdingItem && PlayerInput.GetLeftMouse())
         {

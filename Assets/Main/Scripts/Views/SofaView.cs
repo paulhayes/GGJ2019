@@ -19,6 +19,8 @@ public class SofaView : AbstractView
     private GapExplorer gapExplorer;
     private SearchView searchView;
 
+    private PauseController pauseController;
+
     private Cinemachine.CinemachineBrain cinemachineBrain;
 
     private Gap currentGap;
@@ -46,6 +48,9 @@ public class SofaView : AbstractView
     {
         gapExplorer = GetComponent<GapExplorer>();
         searchView = GetComponent<SearchView>();
+
+        pauseController = GetComponent<PauseController>();
+
         cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
     }
 
@@ -57,7 +62,7 @@ public class SofaView : AbstractView
     // Update is called once per frame
     void Update()
     {
-        if (introCam.gameObject.activeSelf || cinemachineBrain.IsBlending)
+        if (pauseController.IsPaused() || introCam.gameObject.activeSelf || cinemachineBrain.IsBlending)
             return;
 
         creaseIndicator.SetActive(false);
