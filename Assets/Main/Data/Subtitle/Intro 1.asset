@@ -21,8 +21,9 @@ MonoBehaviour:
     Area: 1
     WriteMode: 1
     CharacterDisplay: 0
-  Delay: 3
-  Duration: 2
+  Delay: 1
+  Duration: 1
+  ClickToContinue: 1
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 5220427715934903604, guid: 220ad3559a63d7e4f8990401c0110865,
     type: 3}

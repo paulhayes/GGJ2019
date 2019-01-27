@@ -1,79 +1,9 @@
 fileFormatVersion: 2
-guid: cdfe79f3f0acf4c02a9d1caeb74b11a5
+guid: 1a76122ec3928459c87dc5a7403aee90
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Cushion.000
-    100004: Cushion.001
-    100006: Cushion.002
-    100008: Cushion.003
-    100010: Cushion.004
-    100012: CushionBack.000
-    100014: CushionBack.001
-    100016: CushionBack.002
-    100018: Cushion.005
-    100020: Cushion.006
-    100022: CushionBack.003
-    100024: CushionBack.004
-    100026: CushionBack.005
-    100028: CushionBack.006
-    100030: CushionBack.007
-    400000: //RootNode
-    400002: Cushion.000
-    400004: Cushion.001
-    400006: Cushion.002
-    400008: Cushion.003
-    400010: Cushion.004
-    400012: CushionBack.000
-    400014: CushionBack.001
-    400016: CushionBack.002
-    400018: Cushion.005
-    400020: Cushion.006
-    400022: CushionBack.003
-    400024: CushionBack.004
-    400026: CushionBack.005
-    400028: CushionBack.006
-    400030: CushionBack.007
-    2100000: Fabric
-    2100002: Test UV
-    2300000: //RootNode
-    2300002: Cushion.000
-    2300004: Cushion.001
-    2300006: Cushion.002
-    2300008: Cushion.003
-    2300010: Cushion.004
-    2300012: CushionBack.000
-    2300014: CushionBack.001
-    2300016: CushionBack.002
-    2300018: Cushion.005
-    2300020: Cushion.006
-    2300022: CushionBack.003
-    2300024: CushionBack.004
-    2300026: CushionBack.005
-    2300028: CushionBack.006
-    2300030: CushionBack.007
-    3300000: //RootNode
-    3300002: Cushion.000
-    3300004: Cushion.001
-    3300006: Cushion.002
-    3300008: Cushion.003
-    3300010: Cushion.004
-    3300012: CushionBack.000
-    3300014: CushionBack.001
-    3300016: CushionBack.002
-    3300018: Cushion.005
-    3300020: Cushion.006
-    3300022: CushionBack.003
-    3300024: CushionBack.004
-    3300026: CushionBack.005
-    3300028: CushionBack.006
-    3300030: CushionBack.007
-    4300000: Cushion.000
-    4300002: CushionBack.000
-    4300004: Cushion.006
-    4300006: CushionBack.003
-    4300008: CushionBack.002
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -114,7 +44,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
@@ -154,7 +84,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

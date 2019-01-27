@@ -33,6 +33,7 @@ public class Dialog : ScriptableObject
 	public DisplayArea[] Displays = new DisplayArea[1];
 	public float Delay;
 	public float Duration = 2.0f;
+	public bool ClickToContinue;
 	[Space]
 	public AudioClip PlaySound;
 	public GameObject DisplayObject;
