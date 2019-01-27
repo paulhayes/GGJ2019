@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
-  m_Name: Photo
+  m_Name: Tooth
   m_EditorClassIdentifier: 
   Displays:
-  - Text: Hey June. Hah! You were freezing in that dress, completely forgot about
-      the wind-chill. Always account for the wind-chill.
+  - Text: Oh, yeah, sorry
     Area: 0
     WriteMode: 0
     CharacterDisplay: 0
   Delay: 0
   Duration: 2
   ClickToContinue: 1
-  PlaySound: {fileID: 8300000, guid: fe8899bc8973fb842bfd5ad36af3370b, type: 3}
-  DisplayObject: {fileID: 8283791770267369280, guid: 0b893e576afda674792a823f1a085845,
-    type: 3}
+  PlaySound: {fileID: 8300000, guid: 370ddfe2103ef2d49b996110e8d12180, type: 3}
+  DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}

@@ -20,6 +20,6 @@ MonoBehaviour:
   Delay: 0
   Duration: 2
   ClickToContinue: 1
-  PlaySound: {fileID: 0}
+  PlaySound: {fileID: 8300000, guid: 3905566349ad13844a25f75c2dee9eb3, type: 3}
   DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}

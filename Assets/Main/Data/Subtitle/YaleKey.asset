@@ -20,7 +20,7 @@ MonoBehaviour:
   Delay: 0
   Duration: 2
   ClickToContinue: 1
-  PlaySound: {fileID: 0}
+  PlaySound: {fileID: 8300000, guid: 7501d7c8315c4184491831b22d8bcea8, type: 3}
   DisplayObject: {fileID: 9049146891420208113, guid: d08fd8669121b37408b0bb7aba3f9349,
     type: 3}
   Enqueues: {fileID: 0}
