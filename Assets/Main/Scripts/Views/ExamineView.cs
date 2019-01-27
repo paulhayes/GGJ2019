@@ -11,6 +11,9 @@ public class ExamineView : AbstractView
 
 	public Item currentItem;
 
+    [HideInInspector]
+    public AbstractView lastView;
+
     [SerializeField]
     DialogManager dialogManager;
 
@@ -33,8 +36,12 @@ public class ExamineView : AbstractView
 
 		collection.Complete (currentItem);
 
-		searchView.Begin();
         //dialogManager.Play(introDialog);
+
+        if (lastView)
+            lastView.Begin();
+
+        lastView = null;
 
         End();
     }

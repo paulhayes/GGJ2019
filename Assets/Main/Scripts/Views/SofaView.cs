@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SofaView : AbstractView
 {
-    public static bool triggerTutorial = true;
+    public static bool triggerTutorial = false;
 
     [SerializeField]
     private Camera cam;
@@ -94,12 +94,16 @@ public class SofaView : AbstractView
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsLockbox))
         {
-            if (!DialogManager.CurrentMessage == introDialogs[0] && !DialogManager.CurrentMessage == introDialogs[1])
+            if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1])
             {
-                if (!lockbox)
-                    lockbox = hit.collider.GetComponent<Lockbox>();
+                Debug.Log("is this working");
 
-                lockbox.Hovered = true;
+                if (!lockbox)
+                {
+                    lockbox = hit.collider.GetComponent<Lockbox>();
+                    lockbox.SetHover(true);
+                }
+
                 if (PlayerInput.GetLeftMouseDown())
                     lockbox.OpenBox();
 
@@ -112,7 +116,10 @@ public class SofaView : AbstractView
         } else
         {
             if (lockbox)
-                lockbox.Hovered = false;
+            {
+                lockbox.SetHover(false);
+                lockbox = null;
+            }
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsGapSpace))
             {

@@ -177,6 +177,7 @@ public class SearchView : AbstractView
                 introDialogs[3].AutoContinue = true;
 
                 examineView.currentItem = holdingItem;
+                examineView.lastView = this;
                 examineView.Begin();
                 End();
             } else if (!PlayerInput.GetLeftMouse())

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Displays:
   - Text: "Probably a gift from the hole in Simon\u2019s pocket. I don\u2019t think
-      this is legal tender any more."
+      this is \nlegal tender any more."
     Area: 0
     WriteMode: 0
     CharacterDisplay: 0
