@@ -60,6 +60,13 @@ public class GapExplorer : MonoBehaviour
         return currentPos;
     }
 
+    public Vector3 GetNearestItemPosition()
+    {
+        float d = float.MaxValue;
+        var itemPos = currentGap.GetGapSpace().GetClosestItemPosition(handInGapPosition, ref d);
+        return currentGap.PositionFromGapPos(itemPos.position);
+    }
+
     public Vector3 GetHandInGapPos ()
     {
         return handInGapPosition;
