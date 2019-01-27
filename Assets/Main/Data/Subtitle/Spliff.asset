@@ -22,6 +22,7 @@ MonoBehaviour:
   ClickToContinue: 1
   AutoContinue: 1
   PlaySound: {fileID: 8300000, guid: 86d4dfebc4071e44b9190673e5b24289, type: 3}
-  DisplayObject: {fileID: 0}
+  DisplayObject: {fileID: 6798114065294256733, guid: a9f78fe5ad980994d8f2cb41e6d7d301,
+    type: 3}
   Enqueues: {fileID: 0}
   FadeToBlack: 0

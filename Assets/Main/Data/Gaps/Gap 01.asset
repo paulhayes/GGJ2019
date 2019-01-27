@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Gap 01
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 11400000, guid: 7a7ab8a48efdb2448baaeac36f5326a1, type: 2}
   - {fileID: 11400000, guid: c9a51dfc442cae34c9b18a10b4d23d1c, type: 2}
   - {fileID: 11400000, guid: aa701cde94009b5468993b1c6853212f, type: 2}
