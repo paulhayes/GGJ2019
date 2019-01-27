@@ -5687,7 +5687,7 @@ PrefabInstance:
       objectReference: {fileID: 1762557504}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: grabMaxShakeAmount
-      value: 0.03125
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: holeGrowthCurve.m_Curve.Array.size
