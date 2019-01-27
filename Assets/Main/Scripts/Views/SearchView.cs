@@ -55,7 +55,7 @@ public class SearchView : AbstractView
         this.enabled = true;
         currentFOV = gapFOVMinMax.y;
         gapExplorer.MoveIn(0);
-        gapExplorer.SetFOV(currentFOV);
+        cam.fieldOfView = currentFOV;
         PlayerInput.ShowMouse(false);
         holdingItem = null;
 
@@ -69,8 +69,12 @@ public class SearchView : AbstractView
         //sofaView.enabled = true;
         PlayerInput.ShowMouse(true);
 
+        gapExplorer.MoveIn(0);
+        cam.fieldOfView = gapFOVMinMax.y;
+
+
         this.enabled = false;
-        
+
 
         //throw new System.NotImplementedException();
     }
@@ -117,8 +121,9 @@ public class SearchView : AbstractView
             sofaView.Begin();
             gapExplorer.Deselect();
             End();
-        }        
 
+            return;
+        }
 
 
         if (cinemachineBrain.IsBlending)
@@ -224,13 +229,14 @@ public class SearchView : AbstractView
             seachingSoundSource.PlayOneShot( sofaRummageSounds.GetNext() );
         }
 
+        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1 - gapExplorer.GetHandInGapPos().y), 0.35f);
+        cam.fieldOfView = currentFOV;
+
         gapExplorer.MoveLeft(speedToMovePan * -PlayerInput.GetMouseX());
 
        
         gapExplorer.MoveIn(speedToMoveInOut * -PlayerInput.GetMouseY());
 
-        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1-gapExplorer.GetHandInGapPos().y), 0.35f);
-        cam.fieldOfView = currentFOV;
         //gapExplorer.SetFOV(currentFOV);
 
         //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;

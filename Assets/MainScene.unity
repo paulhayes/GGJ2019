@@ -1517,13 +1517,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed7fd44de89624428d7a86d3a2fd90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RequiredItem: {fileID: 0}
   unlockedIndicator: {fileID: 922289484}
   lockedIndicator: {fileID: 0}
   openIndicator: {fileID: 1167729568}
   dangerIndicator: {fileID: 189149528}
   openAnimator: {fileID: 493380042}
   TryOpenDialog: {fileID: 11400000, guid: a603de28e9796db4b9f51ff5d1f5b200, type: 2}
-  View: {fileID: 1005133088}
+  counterFader: {fileID: 0}
+  DialogAfterOpen: {fileID: 0}
+  View: {fileID: 0}
+  canOpen: 0
   IsOpening: 0
   _camera: {fileID: 556063196}
 --- !u!65 &306259010
@@ -5717,6 +5721,11 @@ PrefabInstance:
       propertyPath: triggerTutorial
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4630489639443252466, guid: c7238fc3f9220384d9afa172b0c63ace,
+        type: 3}
+      propertyPath: _triggerTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: introDialogs.Array.size
       value: 4
@@ -6016,18 +6025,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1005133088 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace,
-    type: 3}
-  m_PrefabInstance: {fileID: 1005133083}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1005133085}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e37a22503c952341b5491d0b956d384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1005838617
 GameObject:
   m_ObjectHideFlags: 0
