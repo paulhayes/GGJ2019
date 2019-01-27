@@ -11,6 +11,7 @@
         ColorMask 0
         ZWrite Off
         ZTest Off
+        Cull Off
 
         Stencil {
             Ref 2
