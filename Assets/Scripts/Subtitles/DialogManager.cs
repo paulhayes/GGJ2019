@@ -14,8 +14,11 @@ public class DialogManager : MonoBehaviour
 	}
 
 	public Dialog PlayOnStart;
-
 	public DisplayMapping[] Displays;
+	[Space]
+	public CanvasGroup ClickToContinue;
+	public CurveInterpolator ClickToContinueCurve;
+	[Space]
 	public float fadeInTime = 0.5f;
 	public float fadeOutTime = 0.5f;
 
@@ -34,12 +37,19 @@ public class DialogManager : MonoBehaviour
 
 	private void Start ()
 	{
+		ClickToContinueCurve.TargetValue = 0.0f;
 		foreach (var findDisplay in Displays)
 		{
 			findDisplay.Display.gameObject.SetActive (false);
 		}
 
 		StartCoroutine (Process());
+	}
+
+	private void Update ()
+	{
+		ClickToContinueCurve.Update (Time.deltaTime);
+		ClickToContinue.alpha = ClickToContinueCurve.Value;
 	}
 
 	IEnumerator<YieldInstruction> Process()
@@ -139,6 +149,14 @@ public class DialogManager : MonoBehaviour
 			}
 			
 			yield return new WaitForSeconds (currentMessage.Duration);
+
+			if(currentMessage.ClickToContinue)
+			{
+				ClickToContinueCurve.TargetValue = 1.0f;
+				while (!PlayerInput.GetLeftMouseDown ())
+					yield return null;
+				ClickToContinueCurve.TargetValue = 0.0f;
+			}
 
 			// Get the next message and only fade out if the next message is not the same.
 			Dialog nextMessage = null;
