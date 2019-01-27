@@ -20,7 +20,7 @@ MonoBehaviour:
   - Text: Once you have found something, click and drag it up from the sofa.
     Area: 0
     WriteMode: 1
-    CharacterDisplay: 0.05
+    CharacterDisplay: 0.015
   Delay: 0.25
   Duration: 1
   ClickToContinue: 0

@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class Lockbox : MonoBehaviour
 {
+	[SerializeField] Item RequiredItem;
+	[Space]
 	[SerializeField] GameObject unlockedIndicator;
 	[SerializeField] GameObject lockedIndicator;
 	[Space]
 	[SerializeField] GameObject openIndicator;
 	[SerializeField] GameObject dangerIndicator;
+	[Space]
 	[SerializeField] Animator openAnimator;
 	[SerializeField] Dialog TryOpenDialog;
+	[SerializeField] CanvasGroup counterFader;
+
+	public Dialog DialogAfterOpen;
 
 	public SofaView View;
-
+	[SerializeField]
 	private bool canOpen;
 	public bool IsOpening;
 
@@ -43,9 +49,9 @@ public class Lockbox : MonoBehaviour
 			hovered = value;
 
 			if (CanOpen)
-				openIndicator.SetActive (value);
+				openIndicator.SetActive (value && !IsOpening);
 			else
-				dangerIndicator.SetActive (value);
+				dangerIndicator.SetActive (value && !IsOpening);
 		}
 	}
 
@@ -96,11 +102,30 @@ public class Lockbox : MonoBehaviour
 			_camera.gameObject.SetActive (true);
 			openIndicator.SetActive (false);
 			dangerIndicator.SetActive (false);
+
+			if (unlockedIndicator != null)
+				unlockedIndicator.SetActive (false);
+
+			if(lockedIndicator != null)
+				lockedIndicator.SetActive (false);
+
+			DialogManager.Instance.Play (DialogAfterOpen);
+
+			StartCoroutine (EndingRoutine());
 		}
 		else
 		{
 			if (TryOpenDialog != null)
 				DialogManager.Instance.Play (TryOpenDialog);
+		}
+	}
+
+	IEnumerator EndingRoutine()
+	{
+		foreach(var time in new TimedLoop(0.75f))
+		{
+			counterFader.alpha = 1.0f - time;
+			yield return null;
 		}
 	}
 }
