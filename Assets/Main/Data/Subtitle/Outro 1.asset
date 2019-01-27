@@ -10,21 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
-  m_Name: Intro 2
+  m_Name: Outro 1
   m_EditorClassIdentifier: 
   Displays:
-  - Text: Controls
-    Area: 1
-    WriteMode: 0
-    CharacterDisplay: 0
-  - Text: Hover over one of the gaps in the sofa and click it to start searching
+  - Text: I miss you guys...
     Area: 0
     WriteMode: 1
-    CharacterDisplay: 0.015
-  Delay: 0.25
-  Duration: 1
+    CharacterDisplay: 0.1
+  Delay: 6
+  Duration: 4
   ClickToContinue: 0
-  AutoContinue: 0
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 0}
-  Enqueues: {fileID: 11400000, guid: 27f4be0e36cb32446939f6056ad4b6a8, type: 2}
+  Enqueues: {fileID: 0}
