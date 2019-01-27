@@ -56,6 +56,7 @@ public class ExamineView : AbstractView
         dialogManager.OnFinished += OnDialogComplete;
 
         currentItem.hasBeenFound = true;
+        Item.unlocked++;
         if (triggerTutorial)
         {
             currentItem.dialog.Enqueues = introDialog;

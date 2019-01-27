@@ -264,7 +264,7 @@ public class SearchView : AbstractView
     {
         //Debug.LogFormat("Over {0}",hoverItem.name);
 
-        itemHint.Hint(hoverItem,gapExplorer.GetHandPosWorldSpace());     
+        itemHint.Hint(hoverItem,gapExplorer.GetNearestItemPosition());     
     }
     private void OnOutItem(Item hoverItem)
     {

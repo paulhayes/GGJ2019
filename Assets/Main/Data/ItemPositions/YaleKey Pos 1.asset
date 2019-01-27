@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: YaleKey Pos 1
   m_EditorClassIdentifier: 
   position: {x: 0.8, y: 1}
-  item: {fileID: 11400000, guid: 6ca7f434a14b76645a0c985f46355e37, type: 2}
+  item: {fileID: 11400000, guid: 609b11b560b0b76498bf92c8b071151d, type: 2}
