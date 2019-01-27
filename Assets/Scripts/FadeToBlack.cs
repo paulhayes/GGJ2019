@@ -10,6 +10,7 @@ public class FadeToBlack : MonoBehaviour
 	public float FadeSpeed = 1.0f;
 	public float CurrentValue;
 	public bool Faded;
+	public GameObject Child;
 
 	private CanvasGroup canvasGroup;
 

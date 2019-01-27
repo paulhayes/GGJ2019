@@ -109,9 +109,12 @@ public class Lockbox : MonoBehaviour
 			if(lockedIndicator != null)
 				lockedIndicator.SetActive (false);
 
+			View.gameObject.SetActive (false);
+
 			DialogManager.Instance.Play (DialogAfterOpen);
 
 			StartCoroutine (EndingRoutine());
+			FadeToBlack.Instance.Child.SetActive (true);
 		}
 		else
 		{
