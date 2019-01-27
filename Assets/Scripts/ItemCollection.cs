@@ -32,6 +32,10 @@ public class ItemCollection : MonoBehaviour
 
 	public void Complete(Item item)
 	{
+		if (Reciever.RequiredItem == item)
+		{
+			Reciever.CanOpen = true;
+		}
 		foreach(var display in items)
 		{
 			if (display.Identifier == item)
