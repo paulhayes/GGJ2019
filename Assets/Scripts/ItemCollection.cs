@@ -10,6 +10,8 @@ public class ItemCollection : MonoBehaviour
 
 	public DampenInterpolator Dampener;
 
+	public Lockbox Reciever;
+
 	private ItemDisplay[] items;
 	private int completed;
 	
