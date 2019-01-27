@@ -46,6 +46,8 @@ public class SofaView : AbstractView
 
     private void Awake()
     {
+        Item.ResetAll();
+
         gapExplorer = GetComponent<GapExplorer>();
         searchView = GetComponent<SearchView>();
 

@@ -14,6 +14,9 @@ public class GapSpace : ScriptableObject
         Item closestItem = null;
         float closestDistSqr = float.MaxValue;
         for(int i=0;i<items.Length;i++){
+            if(items[i].item.hasBeenFound){
+                continue;
+            }
             float distSqr = (pos-items[i].position).sqrMagnitude;
             if( distSqr < closestDistSqr ){
                 closestItem = items[i].item;

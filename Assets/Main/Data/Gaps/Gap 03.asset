@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe9b11527a21d5429fae23288db8c98, type: 3}
   m_Name: Gap 03
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 7a7ab8a48efdb2448baaeac36f5326a1, type: 2}
+  items: []
