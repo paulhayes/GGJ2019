@@ -55,6 +55,11 @@ public class Gap : MonoBehaviour
         _camera.gameObject.SetActive(false);
     }
 
+    public void SetFOV (float fov)
+    {
+        _camera.m_Lens.FieldOfView = fov;
+    }
+
     public float NormalizedPosOnLine(Vector3 position)
     {
         var pos = GetNearest( position ) - start.position;

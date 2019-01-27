@@ -9,12 +9,24 @@ public class SearchView : AbstractView
 
     [SerializeField] Camera cam;
 
+    [SerializeField] float gapSpeedModifier = 0.25f;
+
+    [SerializeField] Vector2 gapFOVMinMax;
+
+    private float currentFOV, targetFOV;
+
+    private Cinemachine.CinemachineBrain cinemachineBrain;
+
     GapExplorer gapExplorer;
     SofaView sofaView;
 
     public override void Begin()
     {
         this.enabled = true;
+        currentFOV = gapFOVMinMax.y;
+        gapExplorer.SetFOV(currentFOV);
+        PlayerInput.ShowMouse(false);
+
         //sofaView.enabled = false;
         //throw new System.NotImplementedException();
     }
@@ -22,12 +34,17 @@ public class SearchView : AbstractView
     public override void End()
     {
         //sofaView.enabled = true;
+        PlayerInput.ShowMouse(true);
+
         this.enabled = false;
+
         //throw new System.NotImplementedException();
     }
 
     private void Awake()
     {
+        cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
+
         sofaView = GetComponent<SofaView>();
         gapExplorer = GetComponent<GapExplorer>();
     }
@@ -39,25 +56,47 @@ public class SearchView : AbstractView
 
     private void Update()
     {
-        float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
-        
-        float speedToMove = 0;
-
-        if (mousePosX < mouseSideThreshold)
+        if (PlayerInput.GetRightMouseDown())
         {
-               
-            speedToMove = maxPanSpeed * Time.deltaTime;
-            Debug.Log(speedToMove);
-            gapExplorer.MoveLeft(speedToMove);
-
-            //transform.position = gapExplorer.GetHandPosWorldSpace();
-        } else if (mousePosX > 1 - mouseSideThreshold)
-        {
-            speedToMove = maxPanSpeed * Time.deltaTime;
-            Debug.Log(speedToMove);
-            gapExplorer.MoveRight(speedToMove);
-
-            //transform.position = gapExplorer.GetHandPosWorldSpace();
+            sofaView.Begin();
+            End();
         }
+
+        if (cinemachineBrain.IsBlending)
+            return;
+
+        float speedToMove = maxPanSpeed * Time.deltaTime;
+
+        if (PlayerInput.GetLeftMouse())
+        {
+            speedToMove *= gapSpeedModifier;
+            gapExplorer.MoveIn(speedToMove * PlayerInput.GetMouseY());
+        } else
+        {
+            gapExplorer.MoveIn(2);
+        }
+
+        gapExplorer.MoveLeft(speedToMove * -PlayerInput.GetMouseX());
+        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, gapExplorer.GetHandInGapPos().y), 0.35f);
+        gapExplorer.SetFOV(currentFOV);
+
+        //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
+
+        //float speedToMove = 0;
+
+        //if (mousePosX < mouseSideThreshold)
+        //{
+
+        //    speedToMove = maxPanSpeed * Time.deltaTime;
+        //    gapExplorer.MoveLeft(speedToMove);
+
+        //    //transform.position = gapExplorer.GetHandPosWorldSpace();
+        //} else if (mousePosX > 1 - mouseSideThreshold)
+        //{
+        //    speedToMove = maxPanSpeed * Time.deltaTime;
+        //    gapExplorer.MoveRight(speedToMove);
+
+        //    //transform.position = gapExplorer.GetHandPosWorldSpace();
+        //}
     }
 }
