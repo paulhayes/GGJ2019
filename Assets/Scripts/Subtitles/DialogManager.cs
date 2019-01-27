@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogManager : MonoBehaviour
 {
 	public static DialogManager Instance;
+	public static Dialog CurrentMessage;
 
 	[Serializable]
 	public struct DisplayMapping
@@ -77,28 +78,28 @@ public class DialogManager : MonoBehaviour
 				yield break;
 			}
 
-			var currentMessage = messageQueue.Dequeue ();
+			CurrentMessage = messageQueue.Dequeue ();
 
-			if (currentMessage.Enqueues != null)
-				messageQueue.Enqueue (currentMessage.Enqueues);
+			if (CurrentMessage.Enqueues != null)
+				messageQueue.Enqueue (CurrentMessage.Enqueues);
 
-			foreach (var displayOptions in currentMessage.Displays)
+			foreach (var displayOptions in CurrentMessage.Displays)
 			{
 				displayOptions.CachePosiiton = 0;
 			}
 			
-			yield return new WaitForSeconds (currentMessage.Delay);
-			if (currentMessage.PlaySound != null)
-				soundPlayer.PlayOneShot (currentMessage.PlaySound);
+			yield return new WaitForSeconds (CurrentMessage.Delay);
+			if (CurrentMessage.PlaySound != null)
+				soundPlayer.PlayOneShot (CurrentMessage.PlaySound);
 
-			if(currentMessage.DisplayObject != null && ObjectCanvas.Instance.LastTarget != currentMessage.DisplayObject)
-				ObjectCanvas.Instance.Render (currentMessage.DisplayObject);
+			if(CurrentMessage.DisplayObject != null && ObjectCanvas.Instance.LastTarget != CurrentMessage.DisplayObject)
+				ObjectCanvas.Instance.Render (CurrentMessage.DisplayObject);
 
 			foreach (var findDisplay in Displays)
 			{
 				findDisplay.Display.gameObject.SetActive (false);
 			}
-			foreach (var currentMessageDisplay in currentMessage.Displays)
+			foreach (var currentMessageDisplay in CurrentMessage.Displays)
 			{
 				foreach(var findDisplay in Displays)
 				{
@@ -120,9 +121,9 @@ public class DialogManager : MonoBehaviour
 				{
 					findDisplay.Display.fader.alpha = time;
 					
-					if (currentMessage != null)
+					if (CurrentMessage != null)
 					{
-						foreach (var displayOptions in currentMessage.Displays)
+						foreach (var displayOptions in CurrentMessage.Displays)
 						{
 							if (findDisplay.Area == displayOptions.Area)
 							{
@@ -140,7 +141,7 @@ public class DialogManager : MonoBehaviour
 			while (true)
 			{
 				bool hasTyped = false;
-				foreach (var displayOptions in currentMessage.Displays)
+				foreach (var displayOptions in CurrentMessage.Displays)
 				{
 					foreach (var findDisplay in Displays)
 					{
@@ -161,9 +162,9 @@ public class DialogManager : MonoBehaviour
 					break;
 			}
 			
-			yield return new WaitForSeconds (currentMessage.Duration);
+			yield return new WaitForSeconds (CurrentMessage.Duration);
 
-			if(currentMessage.ClickToContinue)
+			if(CurrentMessage.ClickToContinue)
 			{
 				ClickToContinueCurve.TargetValue = 1.0f;
 				while (!PlayerInput.GetLeftMouseDown ())
@@ -176,9 +177,9 @@ public class DialogManager : MonoBehaviour
 			if (messageQueue.Count != 0)
 				nextMessage = messageQueue.Peek ();
 			
-			if (nextMessage != null && nextMessage.DisplayObject != currentMessage.DisplayObject)
+			if (nextMessage != null && nextMessage.DisplayObject != CurrentMessage.DisplayObject)
 			{
-				if (ObjectCanvas.Instance.LastTarget == currentMessage.DisplayObject)
+				if (ObjectCanvas.Instance.LastTarget == CurrentMessage.DisplayObject)
 				{
 					ObjectCanvas.Instance.Clear ();
 				}

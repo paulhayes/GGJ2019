@@ -37,7 +37,7 @@ public class SearchView : AbstractView
     private float currentFOV, targetFOV;
 
     private Vector3 camPosAtGrab;
-    private float handPosAtGrabY;
+    private float handPosAtGrabY = -1;
 
     GapExplorer gapExplorer;
     SofaView sofaView;
@@ -74,7 +74,7 @@ public class SearchView : AbstractView
     private void Awake()
     {
         //cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
-
+        transform.SetParent(null);
         sofaView = GetComponent<SofaView>();
         examineView = GetComponent<ExamineView>();
         gapExplorer = GetComponent<GapExplorer>();
@@ -132,6 +132,14 @@ public class SearchView : AbstractView
 
                 OnOverItem(hoverItem);
             }
+
+            if (PlayerInput.GetLeftMouseDown())
+            {
+                holdingItem = hoverItem;
+                camPosAtGrab = cam.gameObject.transform.position;
+                handPosAtGrabY = gapExplorer.GetHandInGapPos().y;
+            }
+
         }
         else {
             if(hoverItem){
@@ -139,13 +147,6 @@ public class SearchView : AbstractView
             }
             hoverItem = null;
         }        
-
-        if( PlayerInput.GetLeftMouseDown() )
-        {            
-            holdingItem = hoverItem;
-            camPosAtGrab = cam.gameObject.transform.position;
-            handPosAtGrabY = gapExplorer.GetHandInGapPos().y;
-        }
 
         float speedToMoveInOut;
         float speedToMovePan = speedToMoveInOut = maxPanSpeed * mouseSens.value * Time.deltaTime;
@@ -156,7 +157,7 @@ public class SearchView : AbstractView
                 cam.transform.position = camPosAtGrab;
 
                 camPosAtGrab = Vector3.zero;
-                handPosAtGrabY = 0;
+                handPosAtGrabY = -1;
 
                 examineView.currentItem = holdingItem;
                 examineView.Begin();
@@ -166,7 +167,7 @@ public class SearchView : AbstractView
                 cam.transform.position = camPosAtGrab;
 
                 camPosAtGrab = Vector3.zero;
-                handPosAtGrabY = 0;
+                handPosAtGrabY = -1;
 
                 holdingItem = null;
 
@@ -185,7 +186,9 @@ public class SearchView : AbstractView
                 speedToMovePan *= 0;
                 Vector3 newCamPos = camPosAtGrab;
 
-                float shakeAmount = Mathf.Clamp01(ExtensionMethods.Map((1 - gapExplorer.GetHandInGapPos().y), handPosAtGrabY, 1, 0, 1 ));
+                float shakeAmount = Mathf.Clamp01(ExtensionMethods.Map((1-gapExplorer.GetHandInGapPos().y), 0f, handPosAtGrabY, 0f, 1f )) * Time.deltaTime;
+                //Debug.Log("handPosAtGrabY: " + handPosAtGrabY.ToString() + ", 1-GetHandInGapPos.y: " + (1-gapExplorer.GetHandInGapPos().y).ToString());
+                Debug.Log(shakeAmount);
 
                 newCamPos.x += grabMaxShakeAmount * UnityEngine.Random.Range(-1f, 1f) * shakeAmount;
                 newCamPos.z += grabMaxShakeAmount * UnityEngine.Random.Range(-1f, 1f) * shakeAmount;
@@ -242,7 +245,7 @@ public class SearchView : AbstractView
     {
         //Debug.LogFormat("Over {0}",hoverItem.name);
 
-        itemHint.Hint(hoverItem);        
+        itemHint.Hint(hoverItem,gapExplorer.GetHandPosWorldSpace());     
     }
     private void OnOutItem(Item hoverItem)
     {

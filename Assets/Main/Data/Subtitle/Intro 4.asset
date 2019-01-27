@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
-  m_Name: Intro 1
+  m_Name: Intro 4
   m_EditorClassIdentifier: 
   Displays:
-  - Text: So Far From Home
+  - Text: Controls
     Area: 1
+    WriteMode: 0
+    CharacterDisplay: 0
+  - Text: Move your mouse forward and back to dig deeper into the sofa.
+    Area: 0
     WriteMode: 1
     CharacterDisplay: 0.05
-  Delay: 0.2
+  Delay: 0.25
   Duration: 1
   ClickToContinue: 1
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 0}
-  Enqueues: {fileID: 11400000, guid: 64deb11ac79ccf543aa3a34717458533, type: 2}
+  Enqueues: {fileID: 11400000, guid: 2dda3657cf2d31e4c8a3773b60d6e3c2, type: 2}

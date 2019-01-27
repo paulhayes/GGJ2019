@@ -13,18 +13,17 @@ MonoBehaviour:
   m_Name: Intro 2
   m_EditorClassIdentifier: 
   Displays:
-  - Text: Receipt
+  - Text: Controls
     Area: 1
     WriteMode: 0
     CharacterDisplay: 0
-  - Text: Never could get that curry stain out of the carpet, sorry Emma. Smelled
-      nice though.
+  - Text: Click on the highlighted areas on the sofa to begin searching.
     Area: 0
     WriteMode: 1
-    CharacterDisplay: 0
+    CharacterDisplay: 0.05
   Delay: 0.25
   Duration: 1
   ClickToContinue: 1
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 0}
-  Enqueues: {fileID: 11400000}
+  Enqueues: {fileID: 11400000, guid: 27f4be0e36cb32446939f6056ad4b6a8, type: 2}
