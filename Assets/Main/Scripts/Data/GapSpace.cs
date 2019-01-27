@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class GapSpace : ScriptableObject
 {
-    ItemPosition[] positions;
+    public ItemPosition[] positions;
 
     public Item GetClosestItem(Vector2 pos, ref float distance)
     {
