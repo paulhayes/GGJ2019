@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SofaView : AbstractView
 {
-    public static bool triggerTutorial = false;
+    public static bool triggerTutorial = true;
 
     [SerializeField]
     private Camera cam;
