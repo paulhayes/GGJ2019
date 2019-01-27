@@ -15,6 +15,11 @@ MonoBehaviour:
   Displays:
   - Text: "Its just a...lot dry, it\u2019s still good?"
     Area: 0
+    WriteMode: 0
+    CharacterDisplay: 0
   Delay: 0
   Duration: 2
+  ClickToContinue: 1
   PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 0}
+  Enqueues: {fileID: 0}

@@ -20,7 +20,7 @@ MonoBehaviour:
     CharacterDisplay: 0
   Delay: 0
   Duration: 2
-  ClickToContinue: 0
+  ClickToContinue: 1
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 550308921366353335, guid: f61f4914e12741f429e363acde103a43,
     type: 3}

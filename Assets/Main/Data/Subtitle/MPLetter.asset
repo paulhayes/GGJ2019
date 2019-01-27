@@ -17,6 +17,11 @@ MonoBehaviour:
       be retiring from my position forthwith. Following the vote on the Prime Ministers
       bill to..blah blah blah, whatever mate."
     Area: 0
+    WriteMode: 0
+    CharacterDisplay: 0
   Delay: 0
   Duration: 2
+  ClickToContinue: 1
   PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 0}
+  Enqueues: {fileID: 0}
