@@ -9,6 +9,8 @@ public class SearchView : AbstractView
 
     [SerializeField] Camera cam;
 
+    [SerializeField] float gapSpeedModifier = 0.25f;
+
     private Cinemachine.CinemachineBrain cinemachineBrain;
 
     GapExplorer gapExplorer;
@@ -57,6 +59,10 @@ public class SearchView : AbstractView
             return;
 
         float speedToMove = maxPanSpeed * -PlayerInput.GetMouseX() * Time.deltaTime;
+
+        if (PlayerInput.GetLeftMouse())
+            speedToMove *= gapSpeedModifier;
+
         gapExplorer.MoveLeft(speedToMove);
 
         //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;

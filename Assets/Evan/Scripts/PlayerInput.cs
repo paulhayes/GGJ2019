@@ -7,6 +7,11 @@ public class PlayerInput
 
     float horiz, vert;
 
+    public static bool GetLeftMouse()
+    {
+        return Input.GetMouseButton(0);
+    }
+
     public static bool GetLeftMouseDown ()
     {
         return Input.GetMouseButtonDown(0);
