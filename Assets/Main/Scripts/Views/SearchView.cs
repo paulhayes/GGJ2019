@@ -38,6 +38,7 @@ public class SearchView : AbstractView
         PlayerInput.ShowMouse(true);
 
         this.enabled = false;
+        gapExplorer.Deselect();
 
         //throw new System.NotImplementedException();
     }
@@ -48,6 +49,7 @@ public class SearchView : AbstractView
 
         sofaView = GetComponent<SofaView>();
         gapExplorer = GetComponent<GapExplorer>();
+
     }
 
     private void Start()
