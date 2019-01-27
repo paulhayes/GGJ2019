@@ -20,6 +20,8 @@ MonoBehaviour:
   Delay: 6
   Duration: 4
   ClickToContinue: 0
+  AutoContinue: 1
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}
+  IgnoreCallback: 0

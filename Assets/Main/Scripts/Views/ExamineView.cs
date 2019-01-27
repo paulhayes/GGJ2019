@@ -23,6 +23,7 @@ public class ExamineView : AbstractView
         dialogManager.OnFinished += OnDialogComplete;
 
         triggerTutorial = SofaView.triggerTutorial;
+
     }
 
     private void OnDialogComplete()
@@ -41,7 +42,10 @@ public class ExamineView : AbstractView
         if(!currentItem){
             searchView.Begin();
             End();
+            return;
         }
+        dialogManager.OnFinished += OnDialogComplete;
+
         currentItem.hasBeenFound = true;
         if (triggerTutorial)
         {
@@ -59,7 +63,7 @@ public class ExamineView : AbstractView
 
     public override void End()
     {
-        
+        dialogManager.OnFinished -= OnDialogComplete;
     }
 
 }

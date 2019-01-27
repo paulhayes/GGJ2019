@@ -10,6 +10,8 @@ public class ItemCollection : MonoBehaviour
 
 	public DampenInterpolator Dampener;
 
+	public Lockbox Reciever;
+
 	private ItemDisplay[] items;
 	private int completed;
 	
@@ -30,6 +32,10 @@ public class ItemCollection : MonoBehaviour
 
 	public void Complete(Item item)
 	{
+		if (Reciever.RequiredItem == item)
+		{
+			Reciever.CanOpen = true;
+		}
 		foreach(var display in items)
 		{
 			if (display.Identifier == item)
