@@ -67,6 +67,11 @@ public class Gap : MonoBehaviour
         return pos.magnitude / endPos.magnitude;
     }
 
+    public Vector3 PositionFromGapPos(Vector2 pos)
+    {
+        return Vector3.Lerp(start.position,end.position,pos.x);
+    }
+
     public Vector3 GetNearest(Vector3 pos)
     {
         var endPos = ( end.position - start.position );

@@ -16,6 +16,9 @@ public class ItemHint : MonoBehaviour
 
     void Awake(){
         cam = FindObjectOfType<Camera>();
+        for(int i=0;i<elements.Length;i++){
+            elements[i].element.SetActive(false);
+        }
     }
     public void Hint(Item item, Vector3 worldPos=default(Vector3))
     {
