@@ -10,6 +10,8 @@ public class SearchView : AbstractView
 
     [SerializeField] Camera cam;
 
+    [SerializeField] private Cinemachine.CinemachineBrain cinemachineBrain;
+
     [SerializeField] float gapPanSpeedMod = 0.25f, gapInOutSpeedMod = 0.25f;
 
     [SerializeField] Vector2 gapFOVMinMax;
@@ -22,6 +24,7 @@ public class SearchView : AbstractView
 
     [SerializeField] ItemHint itemHint;
 
+    [SerializeField] float grabMaxShakeAmount = 5f;
 
     private bool isPaused;
 
@@ -33,7 +36,8 @@ public class SearchView : AbstractView
 
     private float currentFOV, targetFOV;
 
-    private Cinemachine.CinemachineBrain cinemachineBrain;
+    private Vector3 camPosAtGrab;
+    private float handPosAtGrabY;
 
     GapExplorer gapExplorer;
     SofaView sofaView;
@@ -43,7 +47,6 @@ public class SearchView : AbstractView
     Item holdingItem; 
     Item hoverItem;
     ExamineView examineView;
-
 
     public override void Begin()
     {
@@ -70,7 +73,7 @@ public class SearchView : AbstractView
 
     private void Awake()
     {
-        cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
+        //cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
 
         sofaView = GetComponent<SofaView>();
         examineView = GetComponent<ExamineView>();
@@ -123,7 +126,10 @@ public class SearchView : AbstractView
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
                 hoverItem = closestItem;
-                wobble.GenerateImpulse();
+
+                if (!holdingItem)
+                    wobble.GenerateImpulse();
+
                 OnOverItem(hoverItem);
             }
         }
@@ -136,28 +142,54 @@ public class SearchView : AbstractView
 
         if( PlayerInput.GetLeftMouseDown() )
         {            
-            holdingItem = hoverItem;            
+            holdingItem = hoverItem;
+            camPosAtGrab = cam.gameObject.transform.position;
+            handPosAtGrabY = gapExplorer.GetHandInGapPos().y;
         }
 
         float speedToMoveInOut;
         float speedToMovePan = speedToMoveInOut = maxPanSpeed * mouseSens.value * Time.deltaTime;
 
         if ( holdingItem ){
-            if (!PlayerInput.GetLeftMouse())
+            if (gapExplorer.GetHandInGapPos().y == 0)
             {
-                if (gapExplorer.GetHandInGapPos().y == 0)
-                {
-                    examineView.currentItem = holdingItem;
-                    examineView.Begin();
-                    End();
-                }
-                else
-                {
-                    holdingItem = null;
-                }
+                cam.transform.position = camPosAtGrab;
+
+                camPosAtGrab = Vector3.zero;
+                handPosAtGrabY = 0;
+
+                examineView.currentItem = holdingItem;
+                examineView.Begin();
+                End();
+            } else if (!PlayerInput.GetLeftMouse())
+            {
+                cam.transform.position = camPosAtGrab;
+
+                camPosAtGrab = Vector3.zero;
+                handPosAtGrabY = 0;
+
+                holdingItem = null;
+
+                //if (gapExplorer.GetHandInGapPos().y == 0)
+                //{
+                //    examineView.currentItem = holdingItem;
+                //    examineView.Begin();
+                //    End();
+                //}
+                //else
+                //{
+                //    holdingItem = null;
+                //}
             } else
             {
                 speedToMovePan *= 0;
+                Vector3 newCamPos = camPosAtGrab;
+
+                float shakeAmount = Mathf.Clamp01(ExtensionMethods.Map((1 - gapExplorer.GetHandInGapPos().y), handPosAtGrabY, 1, 0, 1 ));
+
+                newCamPos.x += grabMaxShakeAmount * UnityEngine.Random.Range(-1f, 1f) * shakeAmount;
+                newCamPos.z += grabMaxShakeAmount * UnityEngine.Random.Range(-1f, 1f) * shakeAmount;
+                cam.transform.position = newCamPos;
             }
         }
 
@@ -183,7 +215,8 @@ public class SearchView : AbstractView
         gapExplorer.MoveIn(speedToMoveInOut * -PlayerInput.GetMouseY());
 
         currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1-gapExplorer.GetHandInGapPos().y), 0.35f);
-        gapExplorer.SetFOV(currentFOV);
+        cam.fieldOfView = currentFOV;
+        //gapExplorer.SetFOV(currentFOV);
 
         //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
 
