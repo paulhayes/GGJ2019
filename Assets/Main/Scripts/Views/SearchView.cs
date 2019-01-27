@@ -59,7 +59,7 @@ public class SearchView : AbstractView
         PlayerInput.ShowMouse(false);
         holdingItem = null;
 
-        introDialogs[2].AutoContinue = false;
+        introDialogs[3].AutoContinue = false;
         //sofaView.enabled = false;
         //throw new System.NotImplementedException();
     }
@@ -129,7 +129,7 @@ public class SearchView : AbstractView
         
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
-                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1])
+                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1] && DialogManager.CurrentMessage != introDialogs[2])
                 {
                     hoverItem = closestItem;
 
@@ -142,7 +142,7 @@ public class SearchView : AbstractView
 
             if (PlayerInput.GetLeftMouseDown())
             {
-                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1])
+                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1] && DialogManager.CurrentMessage != introDialogs[2])
                 {
                     holdingItem = hoverItem;
                     camPosAtGrab = cam.gameObject.transform.position;
@@ -169,7 +169,7 @@ public class SearchView : AbstractView
                 camPosAtGrab = Vector3.zero;
                 handPosAtGrabY = -1;
 
-                introDialogs[2].AutoContinue = true;
+                introDialogs[3].AutoContinue = true;
 
                 examineView.currentItem = holdingItem;
                 examineView.Begin();

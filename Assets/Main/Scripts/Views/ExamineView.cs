@@ -21,6 +21,8 @@ public class ExamineView : AbstractView
     public void Awake(){
         searchView = GetComponent<SearchView>();
         dialogManager.OnFinished += OnDialogComplete;
+
+        triggerTutorial = SofaView.triggerTutorial;
     }
 
     private void OnDialogComplete()
@@ -60,5 +62,4 @@ public class ExamineView : AbstractView
         
     }
 
-    
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SofaView : AbstractView
 {
+    [SerializeField] bool _triggerTutorial = true;
+    public static bool triggerTutorial = true;
+
     [SerializeField]
     private Camera cam;
 
@@ -21,8 +24,6 @@ public class SofaView : AbstractView
     [SerializeField] DialogManager dialogManager;
 
     [SerializeField] Dialog[] introDialogs;
-
-    private bool triggerTutorial = true;
 
     private GapExplorer gapExplorer;
     private SearchView searchView;
