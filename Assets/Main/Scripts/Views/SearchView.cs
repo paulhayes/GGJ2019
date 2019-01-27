@@ -139,19 +139,27 @@ public class SearchView : AbstractView
             holdingItem = hoverItem;            
         }
 
-        if( holdingItem && !PlayerInput.GetLeftMouse() ){
-            if( gapExplorer.GetHandInGapPos().y == 0 ){
-                examineView.currentItem = holdingItem;
-                examineView.Begin();
-                End();
-            }
-            else {
-                holdingItem = null;
-            }
-        }
-
         float speedToMoveInOut;
         float speedToMovePan = speedToMoveInOut = maxPanSpeed * mouseSens.value * Time.deltaTime;
+
+        if ( holdingItem ){
+            if (!PlayerInput.GetLeftMouse())
+            {
+                if (gapExplorer.GetHandInGapPos().y == 0)
+                {
+                    examineView.currentItem = holdingItem;
+                    examineView.Begin();
+                    End();
+                }
+                else
+                {
+                    holdingItem = null;
+                }
+            } else
+            {
+                speedToMovePan *= 0;
+            }
+        }
 
         if (holdingItem && PlayerInput.GetLeftMouse())
         {
@@ -172,7 +180,7 @@ public class SearchView : AbstractView
         gapExplorer.MoveLeft(speedToMovePan * -PlayerInput.GetMouseX());
 
        
-        gapExplorer.MoveIn(speedToMovePan * -PlayerInput.GetMouseY());
+        gapExplorer.MoveIn(speedToMoveInOut * -PlayerInput.GetMouseY());
 
         currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1-gapExplorer.GetHandInGapPos().y), 0.35f);
         gapExplorer.SetFOV(currentFOV);

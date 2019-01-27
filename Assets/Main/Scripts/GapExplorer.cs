@@ -7,6 +7,8 @@ public class GapExplorer : MonoBehaviour
     [SerializeField]
     Gap[] gaps;
 
+    [SerializeField] AnimationCurve holeGrowthCurve;
+
     protected Gap currentGap;
     protected Vector3 currentPos;
     protected Vector2 handInGapPosition;
@@ -20,7 +22,7 @@ public class GapExplorer : MonoBehaviour
         }
         else {
             Shader.SetGlobalVector("_handPosition", currentPos);
-            Shader.SetGlobalFloat("_handDepth",handInGapPosition.y);
+            Shader.SetGlobalFloat("_handDepth", holeGrowthCurve.Evaluate(handInGapPosition.y));
         }
     }
     public void MoveLeft(float amount)

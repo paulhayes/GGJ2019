@@ -72,7 +72,7 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _expansionMax: 0.0005
+    - _expansionMax: 0.0009
     - _maxDistance: 0.2
     - _maxShadow: 0.5
     m_Colors:

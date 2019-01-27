@@ -35,6 +35,8 @@ public class ExamineView : AbstractView
         }
         currentItem.hasBeenFound = true;
         dialogManager.Play(currentItem.dialog);
+
+        Debug.Log("HEY");
     }
 
     public override void End()
