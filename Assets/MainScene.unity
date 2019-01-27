@@ -1591,6 +1591,7 @@ MonoBehaviour:
   openAnimator: {fileID: 493380042}
   TryOpenDialog: {fileID: 11400000, guid: a603de28e9796db4b9f51ff5d1f5b200, type: 2}
   counterFader: {fileID: 1536181386}
+  key: {fileID: 897107511}
   DialogAfterOpen: {fileID: 11400000, guid: f85bb4017885a974e9212dc8ccc937e7, type: 2}
   View: {fileID: 1005133091}
   canOpen: 0
@@ -5620,6 +5621,12 @@ Transform:
   m_Father: {fileID: 1731474338}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &897107511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 9fd3ab06d8f5143dd89018e4fe2f4419,
+    type: 3}
+  m_PrefabInstance: {fileID: 1203699089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922289484
 GameObject:
   m_ObjectHideFlags: 0

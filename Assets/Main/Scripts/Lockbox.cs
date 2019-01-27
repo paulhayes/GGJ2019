@@ -15,6 +15,7 @@ public class Lockbox : MonoBehaviour
 	[SerializeField] Animator openAnimator;
 	[SerializeField] Dialog TryOpenDialog;
 	[SerializeField] CanvasGroup counterFader;
+	[SerializeField] GameObject key;
 
 	public Dialog DialogAfterOpen;
 
@@ -92,6 +93,7 @@ public class Lockbox : MonoBehaviour
             if (lockedIndicator != null)
                 lockedIndicator.SetActive(false);
 
+			key.SetActive (true);
 
 			View.gameObject.SetActive (false);
 
