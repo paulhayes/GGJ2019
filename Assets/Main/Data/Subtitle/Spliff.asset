@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spliff
   m_EditorClassIdentifier: 
   Displays:
-  - Text: "Its just a...lot dry, it\u2019s still good?"
+  - Text: "Its just a... little dry. Maybe it\u2019s still good?"
     Area: 0
     WriteMode: 0
     CharacterDisplay: 0

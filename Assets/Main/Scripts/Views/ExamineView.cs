@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class ExamineView : AbstractView
 {
-    static bool triggerTutorial = true;
+    static bool triggerTutorial;
 
 	[SerializeField] ItemCollection collection;
 
 	public Item currentItem;
+
+    [HideInInspector]
+    public AbstractView lastView;
 
     [SerializeField]
     DialogManager dialogManager;
@@ -28,11 +31,17 @@ public class ExamineView : AbstractView
 
     private void OnDialogComplete()
     {
-        currentItem.dialog.Enqueues = null;
+        if (currentItem != null && currentItem.dialog != null)
+            currentItem.dialog.Enqueues = null;
+
 		collection.Complete (currentItem);
 
-		searchView.Begin();
         //dialogManager.Play(introDialog);
+
+        if (lastView)
+            lastView.Begin();
+
+        lastView = null;
 
         End();
     }
