@@ -34,6 +34,7 @@ public class Dialog : ScriptableObject
 	public float Delay;
 	public float Duration = 2.0f;
 	public bool ClickToContinue;
+	public bool AutoContinue = true;
 	[Space]
 	public AudioClip PlaySound;
 	public GameObject DisplayObject;

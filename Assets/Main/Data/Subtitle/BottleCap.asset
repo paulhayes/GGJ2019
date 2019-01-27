@@ -21,6 +21,7 @@ MonoBehaviour:
   Delay: 0
   Duration: 2
   ClickToContinue: 1
+  AutoContinue: 1
   PlaySound: {fileID: 8300000, guid: f0c072a24f9d7d646bf2e979aae1e915, type: 3}
   DisplayObject: {fileID: 9067989953065162684, guid: 2437714b9077e3546bfd31ada6c4859f,
     type: 3}

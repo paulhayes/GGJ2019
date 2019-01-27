@@ -34,6 +34,8 @@ public class SearchView : AbstractView
 
     [SerializeField] Cinemachine.CinemachineImpulseSource wobble;
 
+    [SerializeField] Dialog[] introDialogs;
+
     private float currentFOV, targetFOV;
 
     private Vector3 camPosAtGrab;
@@ -56,6 +58,8 @@ public class SearchView : AbstractView
         gapExplorer.SetFOV(currentFOV);
         PlayerInput.ShowMouse(false);
         holdingItem = null;
+
+        introDialogs[2].AutoContinue = false;
         //sofaView.enabled = false;
         //throw new System.NotImplementedException();
     }
@@ -125,19 +129,25 @@ public class SearchView : AbstractView
         
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
-                hoverItem = closestItem;
+                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1])
+                {
+                    hoverItem = closestItem;
 
-                if (!holdingItem)
-                    wobble.GenerateImpulse();
+                    if (!holdingItem)
+                        wobble.GenerateImpulse();
 
-                OnOverItem(hoverItem);
+                    OnOverItem(hoverItem);
+                }
             }
 
             if (PlayerInput.GetLeftMouseDown())
             {
-                holdingItem = hoverItem;
-                camPosAtGrab = cam.gameObject.transform.position;
-                handPosAtGrabY = gapExplorer.GetHandInGapPos().y;
+                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1])
+                {
+                    holdingItem = hoverItem;
+                    camPosAtGrab = cam.gameObject.transform.position;
+                    handPosAtGrabY = gapExplorer.GetHandInGapPos().y;
+                }
             }
 
         }
@@ -158,6 +168,8 @@ public class SearchView : AbstractView
 
                 camPosAtGrab = Vector3.zero;
                 handPosAtGrabY = -1;
+
+                introDialogs[2].AutoContinue = true;
 
                 examineView.currentItem = holdingItem;
                 examineView.Begin();

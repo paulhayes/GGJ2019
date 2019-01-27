@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class ExamineView : AbstractView
 {
+    static bool triggerTutorial = true;
+
 	[SerializeField] ItemCollection collection;
 
 	public Item currentItem;
 
     [SerializeField]
     DialogManager dialogManager;
+
+    [SerializeField] Dialog introDialog;
 
     SearchView searchView;
 
@@ -21,9 +25,12 @@ public class ExamineView : AbstractView
 
     private void OnDialogComplete()
     {
+        currentItem.dialog.Enqueues = null;
 		collection.Complete (currentItem);
 
 		searchView.Begin();
+        //dialogManager.Play(introDialog);
+
         End();
     }
 
@@ -34,7 +41,17 @@ public class ExamineView : AbstractView
             End();
         }
         currentItem.hasBeenFound = true;
+        if (triggerTutorial)
+        {
+            currentItem.dialog.Enqueues = introDialog;
+            triggerTutorial = false;
+        } else
+        {
+            currentItem.dialog.Enqueues = null;
+        }
+
         dialogManager.Play(currentItem.dialog);
+        
 
         Debug.Log("HEY");
     }
