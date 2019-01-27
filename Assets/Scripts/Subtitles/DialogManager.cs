@@ -27,6 +27,7 @@ public class DialogManager : MonoBehaviour
 
 	private Queue<Dialog> messageQueue = new Queue<Dialog> ();
 	private AudioSource soundPlayer;
+	private Coroutine routine;
 
 	public void Play(Dialog dialog)
 	{
@@ -35,7 +36,8 @@ public class DialogManager : MonoBehaviour
 			return;	
 		}
 		messageQueue.Enqueue (dialog);
-		StartCoroutine (Process());
+		if (routine == null)
+			routine = StartCoroutine (Process());
 
 	}
 

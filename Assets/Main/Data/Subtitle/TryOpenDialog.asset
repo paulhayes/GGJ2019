@@ -21,7 +21,7 @@ MonoBehaviour:
     Area: 1
     WriteMode: 0
     CharacterDisplay: 0
-  Delay: 1
+  Delay: 0
   Duration: 1
   ClickToContinue: 0
   PlaySound: {fileID: 0}
