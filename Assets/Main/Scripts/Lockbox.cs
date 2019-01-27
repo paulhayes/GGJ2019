@@ -12,7 +12,7 @@ public class Lockbox : MonoBehaviour
 	[SerializeField] Animator openAnimator;
 	[SerializeField] Dialog TryOpenDialog;
 
-	public SearchView View;
+	public SofaView View;
 
 	private bool canOpen;
 	public bool IsOpening;
