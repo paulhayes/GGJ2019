@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
+  m_Name: TryOpenDialog
+  m_EditorClassIdentifier: 
+  Displays:
+  - Text: Your still looking for the key to open this lockbox.
+    Area: 0
+    WriteMode: 1
+    CharacterDisplay: 0.05
+  - Text: The Lockbox
+    Area: 1
+    WriteMode: 0
+    CharacterDisplay: 0
+  Delay: 1
+  Duration: 1
+  ClickToContinue: 0
+  PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 9049146891420208113, guid: d08fd8669121b37408b0bb7aba3f9349,
+    type: 3}
+  Enqueues: {fileID: 0}
