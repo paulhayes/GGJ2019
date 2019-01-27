@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tooth
   m_EditorClassIdentifier: 
   Displays:
-  - Text: Oh, yeah, sorry
+  - Text: Oof, yeah. Sorry about that, Simon.
     Area: 0
     WriteMode: 0
     CharacterDisplay: 0
@@ -25,3 +25,4 @@ MonoBehaviour:
   DisplayObject: {fileID: 4165182157668330472, guid: dfe4de04754c0d647acaac01ba5d088c,
     type: 3}
   Enqueues: {fileID: 0}
+  FadeToBlack: 0

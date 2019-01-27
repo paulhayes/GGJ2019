@@ -38,22 +38,26 @@ public class Lockbox : MonoBehaviour
 
 	private bool hovered;
 
-	public bool Hovered
-	{
-		get
-		{
-			return hovered;
-		}
-		set
-		{
-			hovered = value;
+    public bool GetHovered ()
+    {
+        return hovered;
+    }
 
-			if (CanOpen)
-				openIndicator.SetActive (value && !IsOpening);
-			else
-				dangerIndicator.SetActive (value && !IsOpening);
-		}
-	}
+    public void SetHover (bool value)
+    {
+        hovered = value;
+
+        Debug.Log(canOpen);
+
+        if (CanOpen)
+        {
+            openIndicator.SetActive(value && !IsOpening);
+        }
+        else
+        {
+            dangerIndicator.SetActive(value && !IsOpening);
+        }
+    }
 
 	public bool CanOpen
 	{
@@ -72,42 +76,22 @@ public class Lockbox : MonoBehaviour
 		}
 	}
 
-	private void OnMouseEnter ()
-	{
-		if (IsOpening)
-			return;
+    public void OpenBox()
+    {
+        if (canOpen)
+        {
+            IsOpening = true;
+            openAnimator.SetTrigger("Play");
+            _camera.gameObject.SetActive(true);
+            openIndicator.SetActive(false);
+            dangerIndicator.SetActive(false);
 
-		Hovered = true;
-	}
+            if (unlockedIndicator != null)
+                unlockedIndicator.SetActive(false);
 
-	private void OnMouseExit ()
-	{
-		if (IsOpening)
-			return;
+            if (lockedIndicator != null)
+                lockedIndicator.SetActive(false);
 
-		Hovered = false;
-	}
-
-	private void Update ()
-	{
-		Hovered = View.isActiveAndEnabled && Hovered;
-	}
-
-	private void OnMouseDown ()
-	{
-		if(CanOpen)
-		{
-			IsOpening = true;
-			openAnimator.SetTrigger ("Play");
-			_camera.gameObject.SetActive (true);
-			openIndicator.SetActive (false);
-			dangerIndicator.SetActive (false);
-
-			if (unlockedIndicator != null)
-				unlockedIndicator.SetActive (false);
-
-			if(lockedIndicator != null)
-				lockedIndicator.SetActive (false);
 
 			View.gameObject.SetActive (false);
 
@@ -115,13 +99,14 @@ public class Lockbox : MonoBehaviour
 
 			StartCoroutine (EndingRoutine());
 			FadeToBlack.Instance.Child.SetActive (true);
-		}
-		else
-		{
-			if (TryOpenDialog != null)
-				DialogManager.Instance.Play (TryOpenDialog);
-		}
-	}
+        }
+        else
+        {
+            if (TryOpenDialog != null && DialogManager.CurrentMessage != TryOpenDialog)
+                DialogManager.Instance.Play(TryOpenDialog);
+
+        }
+    }
 
 	IEnumerator EndingRoutine()
 	{

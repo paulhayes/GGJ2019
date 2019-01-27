@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TryOpenDialog
   m_EditorClassIdentifier: 
   Displays:
-  - Text: Your still looking for the key to open this lockbox.
+  - Text: You're still looking for the key to open this lockbox.
     Area: 0
     WriteMode: 1
     CharacterDisplay: 0.05
@@ -24,3 +24,4 @@ MonoBehaviour:
   PlaySound: {fileID: 0}
   DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}
+  FadeToBlack: 0
