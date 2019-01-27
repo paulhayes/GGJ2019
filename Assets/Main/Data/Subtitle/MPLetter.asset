@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Displays:
   - Text: "Dear Constituent, \r\nIt is with great regret that I inform you I shall
-      be retiring from my position forthwith. Following the vote on the Prime Ministers
+      be retiring from my position forthwith. \nFollowing the vote on the Prime Ministers
       bill to..blah blah blah, whatever mate."
     Area: 0
     WriteMode: 0

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ccb67c4edc28a4d9f22ccd7fdf7295, type: 3}
+  m_Name: SofaRummage
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 5f223889f4a9f264da99431fca9499f4, type: 3}
+  - {fileID: 8300000, guid: e7b98b2508eab2b439c156e466020edf, type: 3}
+  - {fileID: 8300000, guid: cbaa32e1819c59e40acf320bccc8d184, type: 3}
+  - {fileID: 8300000, guid: b8592d962f0754d499c748e1a7159f24, type: 3}
+  - {fileID: 8300000, guid: d0d9c41c32d188e4f8dfcc1e0c0be9f0, type: 3}
+  - {fileID: 8300000, guid: e0358ee4fb815f244b5a8f27c85603e5, type: 3}

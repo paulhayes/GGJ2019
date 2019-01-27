@@ -15,9 +15,16 @@ public class SearchView : AbstractView
 
     [SerializeField] SettingFloat mouseSens;
 
+    [SerializeField] SoundCollection sofaRummageSounds;
+
+    [SerializeField] AudioSource seachingSoundSource;
+
+
     private bool isPaused;
 
     [SerializeField] float maxGrabDistance = 0.1f;
+
+    [SerializeField] Vector2 mouseMovementRummageSoundThreshold = Vector3.one;
 
     [SerializeField] Cinemachine.CinemachineImpulseSource wobble;
 
@@ -33,6 +40,7 @@ public class SearchView : AbstractView
     Item holdingItem; 
     Item hoverItem;
     ExamineView examineView;
+
 
     public override void Begin()
     {
@@ -149,7 +157,15 @@ public class SearchView : AbstractView
         }
 
 
+        if( Mathf.Abs( PlayerInput.GetMouseY() ) > mouseMovementRummageSoundThreshold.y && !seachingSoundSource.isPlaying ||
+            Mathf.Abs( PlayerInput.GetMouseX() ) > mouseMovementRummageSoundThreshold.x && !seachingSoundSource.isPlaying
+        ){
+            seachingSoundSource.PlayOneShot( sofaRummageSounds.GetNext() );
+        }
+
         gapExplorer.MoveLeft(speedToMovePan * -PlayerInput.GetMouseX());
+
+       
         gapExplorer.MoveIn(speedToMovePan * -PlayerInput.GetMouseY());
 
         currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1-gapExplorer.GetHandInGapPos().y), 0.35f);
