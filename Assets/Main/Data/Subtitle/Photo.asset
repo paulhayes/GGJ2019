@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Photo
   m_EditorClassIdentifier: 
   Displays:
-  - Text: Hey June. Hah! You were freezing in that dress, completely forgot about
-      the wind-chill. Always account for the wind-chill.
+  - Text: "Hey June. Hah! You were freezing in that dress, \ncompletely forgot about
+      the wind-chill. Always account for the wind-chill."
     Area: 0
     WriteMode: 0
     CharacterDisplay: 0
   Delay: 0
   Duration: 2
   ClickToContinue: 1
+  AutoContinue: 1
   PlaySound: {fileID: 8300000, guid: fe8899bc8973fb842bfd5ad36af3370b, type: 3}
   DisplayObject: {fileID: 8283791770267369280, guid: 0b893e576afda674792a823f1a085845,
     type: 3}
