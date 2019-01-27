@@ -92,19 +92,23 @@ public class SofaView : AbstractView
         Ray ray = cam.ScreenPointToRay(PlayerInput.GetMousePos());
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsLockbox) && DialogManager.CurrentMessage == null)
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, whatIsLockbox))
         {
-            if (!lockbox)
-                lockbox = hit.collider.GetComponent<Lockbox>();
+            if (!DialogManager.CurrentMessage == introDialogs[0] && !DialogManager.CurrentMessage == introDialogs[1])
+            {
+                if (!lockbox)
+                    lockbox = hit.collider.GetComponent<Lockbox>();
 
-            lockbox.Hovered = true;
-            if (PlayerInput.GetLeftMouseDown())
-                lockbox.OpenBox();
+                lockbox.Hovered = true;
+                if (PlayerInput.GetLeftMouseDown())
+                    lockbox.OpenBox();
 
-            if (currentGap != null)
-                currentGap.ShowIndicator(false);
+                if (currentGap != null)
+                    currentGap.ShowIndicator(false);
 
-            currentGap = null;
+                currentGap = null;
+            }
+
         } else
         {
             if (lockbox)

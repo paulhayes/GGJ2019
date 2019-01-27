@@ -15,13 +15,15 @@ MonoBehaviour:
   Displays:
   - Text: "Dear Constituent, \r\nIt is with great regret that I inform you I shall
       be retiring from my position forthwith. \nFollowing the vote on the Prime Ministers
-      bill to..blah blah blah, whatever mate."
+      bill to... blah blah blah, whatever mate."
     Area: 0
     WriteMode: 0
     CharacterDisplay: 0
   Delay: 0
   Duration: 2
   ClickToContinue: 1
+  AutoContinue: 1
   PlaySound: {fileID: 8300000, guid: f588304c6c5a2fc49af37b8e2c4b0b71, type: 3}
   DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}
+  FadeToBlack: 0

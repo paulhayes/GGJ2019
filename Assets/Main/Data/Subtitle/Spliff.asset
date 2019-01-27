@@ -13,13 +13,15 @@ MonoBehaviour:
   m_Name: Spliff
   m_EditorClassIdentifier: 
   Displays:
-  - Text: "Its just a...lot dry, it\u2019s still good?"
+  - Text: "Its just a... little dry. Maybe it\u2019s still good?"
     Area: 0
     WriteMode: 0
     CharacterDisplay: 0
   Delay: 0
   Duration: 2
   ClickToContinue: 1
+  AutoContinue: 1
   PlaySound: {fileID: 8300000, guid: 86d4dfebc4071e44b9190673e5b24289, type: 3}
   DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}
+  FadeToBlack: 0
