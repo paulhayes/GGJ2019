@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class SearchView : AbstractView
     [SerializeField] SoundCollection sofaRummageSounds;
 
     [SerializeField] AudioSource seachingSoundSource;
+
+    [SerializeField] ItemHint itemHint;
 
 
     private bool isPaused;
@@ -114,23 +117,26 @@ public class SearchView : AbstractView
         if (cinemachineBrain.IsBlending)
             return;
 
-        float dist = 0;
+        float dist = float.MaxValue;
         Item closestItem = gapExplorer.GetClosestItem( ref dist );
         
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
+                hoverItem = closestItem;
                 wobble.GenerateImpulse();
+                OnOverItem(hoverItem);
             }
-            hoverItem = closestItem;
-            Debug.LogFormat("Over {0}",hoverItem.name);
         }
         else {
+            if(hoverItem){
+                OnOutItem(hoverItem);
+            }
             hoverItem = null;
         }        
 
         if( PlayerInput.GetLeftMouseDown() )
         {            
-            holdingItem = closestItem;            
+            holdingItem = hoverItem;            
         }
 
         if( holdingItem && !PlayerInput.GetLeftMouse() ){
@@ -190,4 +196,17 @@ public class SearchView : AbstractView
         //    //transform.position = gapExplorer.GetHandPosWorldSpace();
         //}
     }
+
+    private void OnOverItem(Item hoverItem)
+    {
+        //Debug.LogFormat("Over {0}",hoverItem.name);
+
+        itemHint.Hint(hoverItem);        
+    }
+    private void OnOutItem(Item hoverItem)
+    {
+        //Debug.LogFormat("Out");
+        itemHint.Hint(null);
+    }
+
 }
