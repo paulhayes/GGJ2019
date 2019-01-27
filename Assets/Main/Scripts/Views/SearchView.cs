@@ -17,6 +17,8 @@ public class SearchView : AbstractView
     public override void Begin()
     {
         this.enabled = true;
+        PlayerInput.ShowMouse(false);
+
         //sofaView.enabled = false;
         //throw new System.NotImplementedException();
     }
@@ -25,6 +27,8 @@ public class SearchView : AbstractView
     {
         //sofaView.enabled = true;
         this.enabled = false;
+        PlayerInput.ShowMouse(true);
+
         //throw new System.NotImplementedException();
     }
 
@@ -52,23 +56,26 @@ public class SearchView : AbstractView
         if (cinemachineBrain.IsBlending)
             return;
 
-        float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
-        
-        float speedToMove = 0;
+        float speedToMove = maxPanSpeed * -PlayerInput.GetMouseX() * Time.deltaTime;
+        gapExplorer.MoveLeft(speedToMove);
 
-        if (mousePosX < mouseSideThreshold)
-        {
-               
-            speedToMove = maxPanSpeed * Time.deltaTime;
-            gapExplorer.MoveLeft(speedToMove);
+        //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
 
-            //transform.position = gapExplorer.GetHandPosWorldSpace();
-        } else if (mousePosX > 1 - mouseSideThreshold)
-        {
-            speedToMove = maxPanSpeed * Time.deltaTime;
-            gapExplorer.MoveRight(speedToMove);
+        //float speedToMove = 0;
 
-            //transform.position = gapExplorer.GetHandPosWorldSpace();
-        }
+        //if (mousePosX < mouseSideThreshold)
+        //{
+
+        //    speedToMove = maxPanSpeed * Time.deltaTime;
+        //    gapExplorer.MoveLeft(speedToMove);
+
+        //    //transform.position = gapExplorer.GetHandPosWorldSpace();
+        //} else if (mousePosX > 1 - mouseSideThreshold)
+        //{
+        //    speedToMove = maxPanSpeed * Time.deltaTime;
+        //    gapExplorer.MoveRight(speedToMove);
+
+        //    //transform.position = gapExplorer.GetHandPosWorldSpace();
+        //}
     }
 }

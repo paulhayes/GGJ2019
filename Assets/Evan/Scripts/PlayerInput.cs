@@ -31,4 +31,10 @@ public class PlayerInput
     {
         return -Input.GetAxisRaw("Mouse Y");
     }
+
+    public static void ShowMouse (bool visible)
+    {
+        Cursor.lockState = visible ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = visible;
+    }
 }
