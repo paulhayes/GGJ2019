@@ -10,6 +10,7 @@
         LOD 100
         ColorMask 0
         ZWrite Off
+        ZTest Off
 
         Stencil {
             Ref 2

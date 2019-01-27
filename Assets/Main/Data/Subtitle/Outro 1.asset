@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdef984d5b5e7e94da4e6ba6a647fdca, type: 3}
-  m_Name: HalfBiscuit
+  m_Name: Outro 1
   m_EditorClassIdentifier: 
   Displays:
-  - Text: "Probably shouldn\u2019t eat this, probably."
+  - Text: I miss you guys...
     Area: 0
-    WriteMode: 0
-    CharacterDisplay: 0
-  Delay: 0
-  Duration: 2
-  ClickToContinue: 1
-  PlaySound: {fileID: 8300000, guid: 3905566349ad13844a25f75c2dee9eb3, type: 3}
-  DisplayObject: {fileID: 7700021935082462989, guid: 0bfe2fcc7da3ba8408046548be745006,
-    type: 3}
+    WriteMode: 1
+    CharacterDisplay: 0.1
+  Delay: 6
+  Duration: 4
+  ClickToContinue: 0
+  AutoContinue: 1
+  PlaySound: {fileID: 0}
+  DisplayObject: {fileID: 0}
   Enqueues: {fileID: 0}
+  IgnoreCallback: 0
