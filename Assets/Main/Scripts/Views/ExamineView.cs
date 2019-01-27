@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,13 @@ public class ExamineView : AbstractView
 
     public void Awake(){
         searchView = GetComponent<SearchView>();
+        dialogManager.OnFinished += OnDialogComplete;
+    }
+
+    private void OnDialogComplete()
+    {
+        searchView.Begin();
+        End();
     }
 
     public override void Begin()
@@ -29,4 +37,6 @@ public class ExamineView : AbstractView
     {
         
     }
+
+    
 }

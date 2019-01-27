@@ -52,7 +52,7 @@ public class SearchView : AbstractView
         PlayerInput.ShowMouse(true);
 
         this.enabled = false;
-        gapExplorer.Deselect();
+        
 
         //throw new System.NotImplementedException();
     }
@@ -97,6 +97,7 @@ public class SearchView : AbstractView
         if (PlayerInput.GetRightMouseDown())
         {
             sofaView.Begin();
+            gapExplorer.Deselect();
             End();
         }        
 
@@ -108,7 +109,6 @@ public class SearchView : AbstractView
         float dist = 0;
         Item closestItem = gapExplorer.GetClosestItem( ref dist );
         
-        Debug.LogFormat("> {0}",dist);
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
                 wobble.GenerateImpulse();

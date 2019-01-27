@@ -35,6 +35,8 @@ public class DialogManager : MonoBehaviour
 			return;	
 		}
 		messageQueue.Enqueue (dialog);
+		StartCoroutine (Process());
+
 	}
 
 	private void Awake ()
@@ -49,8 +51,11 @@ public class DialogManager : MonoBehaviour
 		{
 			findDisplay.Display.gameObject.SetActive (false);
 		}
+		soundPlayer = gameObject.AddComponent<AudioSource> ();
 
-		StartCoroutine (Process());
+
+		if(PlayOnStart)
+			Play(PlayOnStart);
 	}
 
 	private void Update ()
@@ -61,19 +66,16 @@ public class DialogManager : MonoBehaviour
 
 	IEnumerator<YieldInstruction> Process()
 	{
-		if(PlayOnStart)
-			messageQueue.Enqueue (PlayOnStart);
-		soundPlayer = gameObject.AddComponent<AudioSource> ();
-
+		IsProcessing = true;
+		
 		while (true)
 		{
-			while (messageQueue.Count == 0)
+			if (messageQueue.Count == 0)
 			{
 				IsProcessing = false;
 				if (OnFinished != null)
 					OnFinished ();
-				yield return null;
-				IsProcessing = true;
+				yield break;
 			}
 
 			var currentMessage = messageQueue.Dequeue ();
