@@ -12,6 +12,11 @@ public class PlayerInput
         return Input.GetMouseButtonDown(0);
     }
 
+    public static bool GetRightMouseDown ()
+    {
+        return Input.GetMouseButtonDown(1);
+    }
+
     public static Vector2 GetMousePos ()
     {
         return Input.mousePosition;

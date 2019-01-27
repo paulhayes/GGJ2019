@@ -9,6 +9,8 @@ public class SearchView : AbstractView
 
     [SerializeField] Camera cam;
 
+    private Cinemachine.CinemachineBrain cinemachineBrain;
+
     GapExplorer gapExplorer;
     SofaView sofaView;
 
@@ -28,6 +30,8 @@ public class SearchView : AbstractView
 
     private void Awake()
     {
+        cinemachineBrain = cam.GetComponent<Cinemachine.CinemachineBrain>();
+
         sofaView = GetComponent<SofaView>();
         gapExplorer = GetComponent<GapExplorer>();
     }
@@ -39,6 +43,15 @@ public class SearchView : AbstractView
 
     private void Update()
     {
+        if (PlayerInput.GetRightMouseDown())
+        {
+            sofaView.Begin();
+            End();
+        }
+
+        if (cinemachineBrain.IsBlending)
+            return;
+
         float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;
         
         float speedToMove = 0;
@@ -47,14 +60,12 @@ public class SearchView : AbstractView
         {
                
             speedToMove = maxPanSpeed * Time.deltaTime;
-            Debug.Log(speedToMove);
             gapExplorer.MoveLeft(speedToMove);
 
             //transform.position = gapExplorer.GetHandPosWorldSpace();
         } else if (mousePosX > 1 - mouseSideThreshold)
         {
             speedToMove = maxPanSpeed * Time.deltaTime;
-            Debug.Log(speedToMove);
             gapExplorer.MoveRight(speedToMove);
 
             //transform.position = gapExplorer.GetHandPosWorldSpace();
