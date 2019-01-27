@@ -55,11 +55,11 @@ public class SearchView : AbstractView
         this.enabled = true;
         currentFOV = gapFOVMinMax.y;
         gapExplorer.MoveIn(0);
-        gapExplorer.SetFOV(currentFOV);
+        cam.fieldOfView = currentFOV;
         PlayerInput.ShowMouse(false);
         holdingItem = null;
 
-        introDialogs[2].AutoContinue = false;
+        introDialogs[3].AutoContinue = false;
         //sofaView.enabled = false;
         //throw new System.NotImplementedException();
     }
@@ -69,8 +69,12 @@ public class SearchView : AbstractView
         //sofaView.enabled = true;
         PlayerInput.ShowMouse(true);
 
+        gapExplorer.MoveIn(0);
+        cam.fieldOfView = gapFOVMinMax.y;
+
+
         this.enabled = false;
-        
+
 
         //throw new System.NotImplementedException();
     }
@@ -117,8 +121,9 @@ public class SearchView : AbstractView
             sofaView.Begin();
             gapExplorer.Deselect();
             End();
-        }        
 
+            return;
+        }
 
 
         if (cinemachineBrain.IsBlending)
@@ -129,7 +134,7 @@ public class SearchView : AbstractView
         
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
-                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1])
+                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1] && DialogManager.CurrentMessage != introDialogs[2])
                 {
                     hoverItem = closestItem;
 
@@ -142,7 +147,7 @@ public class SearchView : AbstractView
 
             if (PlayerInput.GetLeftMouseDown())
             {
-                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1])
+                if (DialogManager.CurrentMessage != introDialogs[0] && DialogManager.CurrentMessage != introDialogs[1] && DialogManager.CurrentMessage != introDialogs[2])
                 {
                     holdingItem = hoverItem;
                     camPosAtGrab = cam.gameObject.transform.position;
@@ -169,7 +174,7 @@ public class SearchView : AbstractView
                 camPosAtGrab = Vector3.zero;
                 handPosAtGrabY = -1;
 
-                introDialogs[2].AutoContinue = true;
+                introDialogs[3].AutoContinue = true;
 
                 examineView.currentItem = holdingItem;
                 examineView.Begin();
@@ -224,13 +229,14 @@ public class SearchView : AbstractView
             seachingSoundSource.PlayOneShot( sofaRummageSounds.GetNext() );
         }
 
+        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1 - gapExplorer.GetHandInGapPos().y), 0.35f);
+        cam.fieldOfView = currentFOV;
+
         gapExplorer.MoveLeft(speedToMovePan * -PlayerInput.GetMouseX());
 
        
         gapExplorer.MoveIn(speedToMoveInOut * -PlayerInput.GetMouseY());
 
-        currentFOV = Mathf.Lerp(currentFOV, Mathf.Lerp(gapFOVMinMax.x, gapFOVMinMax.y, 1-gapExplorer.GetHandInGapPos().y), 0.35f);
-        cam.fieldOfView = currentFOV;
         //gapExplorer.SetFOV(currentFOV);
 
         //float mousePosX = cam.ScreenToViewportPoint(PlayerInput.GetMousePos()).x;

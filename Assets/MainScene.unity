@@ -2317,6 +2317,7 @@ MonoBehaviour:
   Counter: {fileID: 327975725}
   Dampener:
     Speed: 8
+  Reciever: {fileID: 306259009}
 --- !u!4 &412116576
 Transform:
   m_ObjectHideFlags: 0
@@ -5483,7 +5484,7 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: introDialogs.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: cam
@@ -5539,22 +5540,22 @@ PrefabInstance:
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: introDialogs.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 27f4be0e36cb32446939f6056ad4b6a8,
+      objectReference: {fileID: 11400000, guid: 64deb11ac79ccf543aa3a34717458533,
         type: 2}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: introDialogs.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 33bb2be77c4b17c4fb81cb7da5bce7a6,
+      objectReference: {fileID: 11400000, guid: 27f4be0e36cb32446939f6056ad4b6a8,
         type: 2}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: introDialogs.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 2dda3657cf2d31e4c8a3773b60d6e3c2,
+      objectReference: {fileID: 11400000, guid: 33bb2be77c4b17c4fb81cb7da5bce7a6,
         type: 2}
     - target: {fileID: 1828557572, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: introDialogs.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 218572e5548225e4984e0af5185a6568,
+      objectReference: {fileID: 11400000, guid: 2dda3657cf2d31e4c8a3773b60d6e3c2,
         type: 2}
     - target: {fileID: 1828557571, guid: c7238fc3f9220384d9afa172b0c63ace, type: 3}
       propertyPath: holeGrowthCurve.m_Curve.Array.size
@@ -6539,7 +6540,7 @@ GameObject:
   - component: {fileID: 1149481605}
   m_Layer: 0
   m_Name: Cam
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6580,7 +6581,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.01
   far clip plane: 5000
   field of view: 60
   orthographic: 0
@@ -8993,7 +8994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1779326195}
-  m_PathPosition: 0.406226
+  m_PathPosition: 0.2666167
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0.1
@@ -10499,13 +10500,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1762557503}
-  - component: {fileID: 1762557502}
   - component: {fileID: 1762557501}
   - component: {fileID: 1762557504}
   - component: {fileID: 1762557505}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10518,48 +10518,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762557500}
   m_Enabled: 1
---- !u!20 &1762557502
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762557500}
-  m_Enabled: 0
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 1
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!4 &1762557503
 Transform:
   m_ObjectHideFlags: 0
@@ -12504,7 +12462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1255652329}
-  m_PathPosition: 0.8743507
+  m_PathPosition: 0.5951015
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
   m_XDamping: 0.1
