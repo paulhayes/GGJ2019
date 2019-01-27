@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -114,23 +115,25 @@ public class SearchView : AbstractView
         if (cinemachineBrain.IsBlending)
             return;
 
-        float dist = 0;
+        float dist = float.MaxValue;
         Item closestItem = gapExplorer.GetClosestItem( ref dist );
         
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
                 wobble.GenerateImpulse();
+                OnOverItem(hoverItem);
             }
             hoverItem = closestItem;
             Debug.LogFormat("Over {0}",hoverItem.name);
         }
         else {
+            OnOutItem(hoverItem);
             hoverItem = null;
         }        
 
         if( PlayerInput.GetLeftMouseDown() )
         {            
-            holdingItem = closestItem;            
+            holdingItem = hoverItem;            
         }
 
         if( holdingItem && !PlayerInput.GetLeftMouse() ){
@@ -190,4 +193,13 @@ public class SearchView : AbstractView
         //    //transform.position = gapExplorer.GetHandPosWorldSpace();
         //}
     }
+
+    private void OnOverItem(Item hoverItem)
+    {
+        
+    }
+    private void OnOutItem(Item hoverItem)
+    {
+    }
+
 }
