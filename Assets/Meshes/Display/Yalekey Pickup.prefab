@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8749765440273276024}
   - component: {fileID: 7791909955952789908}
   m_Layer: 0
-  m_Name: yalekey
+  m_Name: Yalekey Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aba2aa4444c65488cbf9a2ce0b305f78, type: 3}
+  - {fileID: 2100000, guid: 014b80c8528474264b3d8263f4a7c028, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

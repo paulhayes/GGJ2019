@@ -216,6 +216,8 @@ public class DialogManager : MonoBehaviour
 				yield return null;
 			}
 
+			if (CurrentMessage.FadeToBlack)
+				FadeToBlack.Instance.Faded = true;
 			yield return null;
 		}
 	}

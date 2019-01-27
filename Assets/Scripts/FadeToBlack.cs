@@ -5,14 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class FadeToBlack : MonoBehaviour
 {
+	public static FadeToBlack Instance;
+
 	public float FadeSpeed = 1.0f;
 	public float CurrentValue;
 	public bool Faded;
 
 	private CanvasGroup canvasGroup;
 
-	private void Start ()
+	private void Awake ()
 	{
+		Instance = this;
 		canvasGroup = GetComponent<CanvasGroup> ();
 	}
 
