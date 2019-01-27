@@ -108,7 +108,7 @@ public class SearchView : AbstractView
         float dist = 0;
         Item closestItem = gapExplorer.GetClosestItem( ref dist );
         
-        //Debug.LogFormat("> {0}",dist);
+        Debug.LogFormat("> {0}",dist);
         if( dist <= maxGrabDistance ){
             if( closestItem != hoverItem){
                 wobble.GenerateImpulse();

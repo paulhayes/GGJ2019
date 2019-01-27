@@ -17,6 +17,7 @@ public class GapSpace : ScriptableObject
             float distSqr = (pos-items[i].position).sqrMagnitude;
             if( distSqr < closestDistSqr ){
                 closestItem = items[i].item;
+                closestDistSqr = distSqr;
             }
         }
 
