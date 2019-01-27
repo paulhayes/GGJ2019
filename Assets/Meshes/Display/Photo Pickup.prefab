@@ -25,14 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5438738639992036586}
-  m_LocalRotation: {x: -0.57997805, y: -0.000000059604645, z: -0.0000000037252903,
-    w: 0.81463206}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 6638118156753112497}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -70.898, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 180}
 --- !u!33 &2824138472290164538
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -103,14 +102,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7161842604365385214}
-  m_LocalRotation: {x: -0.57997805, y: -0.000000059604645, z: -0.0000000037252903,
-    w: 0.81463206}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 6638118156753112497}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -70.898, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 180}
 --- !u!33 &5928142137985339542
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -166,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6638118156753112497}
   m_Layer: 0
-  m_Name: photo
+  m_Name: Photo Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
