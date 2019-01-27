@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ItemPosition : ScriptableObject
 {
-    public Vector2 x,y;
+    public Vector2 position;
     public Item item;
 }
