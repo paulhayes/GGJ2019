@@ -17,4 +17,4 @@ Searching between the sofa cushions for a missing key, but what else is down the
 **[Amy Godlima](https://github.com/ACGodliman):** Writing, art direction, and additional art assets\
 **[Aoife Balfe](https://github.com/CrowGyrl):** Music and Sound Design\
 **[Anthony Marmont](https://github.com/Fydar):** Code and UI\
-**Denis Gruba** 3d Asset Creation
+**[Denis Gruba](https://globalgamejam.org/users/denisgruba)** 3d Asset Creation
